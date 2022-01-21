@@ -87,7 +87,6 @@
     "ava": "^3.12.1",
     "codecov": "^3.5.0",
     "cspell": "^4.1.0",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -134,11 +133,6 @@
     "files": [
       "!build/module/**"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   },
   "prettier": {
     "singleQuote": true
