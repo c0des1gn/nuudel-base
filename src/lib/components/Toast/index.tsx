@@ -11,7 +11,7 @@ import {
   ViewProps,
   TextProps,
 } from 'react-native';
-import { withTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 
 export type Position = 'bottom' | 'top' | 'center';
 export type Type = 'danger' | 'success' | 'warning' | 'info' | 'error';
@@ -25,7 +25,6 @@ interface IToastProps {
   fadeOutDuration: number;
   opacity: number;
   defaultCloseDelay: number;
-  theme?: any;
 }
 
 interface IToastState {
@@ -135,7 +134,6 @@ export class Toast extends Component<IToastProps, IToastState> {
   }
 
   render() {
-    const { COLORS, SIZES } = this.props?.theme;
     const { position, type, opacityValue, text } = this.state;
     let style: any = {};
     switch (position) {
@@ -224,4 +222,4 @@ export class Toast extends Component<IToastProps, IToastState> {
   }
 }
 
-export default withTheme(Toast, '');
+export default Toast;

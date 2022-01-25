@@ -1,6 +1,6 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
-import ImagePickerField from './ImagePickerField';
+import { Upload } from '../../components';
 import { t } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
@@ -13,7 +13,7 @@ const RNFieldImageEdit: React.FunctionComponent<IRNFormFieldProps> = (
   const { disabled } = storeProps(props);
   const value = props.value ? props.value : { uri: '' };
   return (
-    <ImagePickerField
+    <Upload
       //isRequired={props.fieldSchema.Required}
       value={value}
       disabled={props.disabled || disabled}

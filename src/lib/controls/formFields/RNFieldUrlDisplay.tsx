@@ -1,16 +1,13 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
-import { Text } from '@Components';
+import { Text } from '../../components';
 import { Linking } from 'react-native';
-import { useTheme } from 'react-native-elements';
-import { useStyles } from './styled';
+import { COLORS, SIZES } from '../../theme';
+import { styles } from './styled';
 
 const RNFieldUrlDisplay: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   if (props.value && isValidURL(props.value)) {
     return (
       <Text

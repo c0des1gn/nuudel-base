@@ -14,10 +14,17 @@
     "resolveJsonModule": true /* Include modules imported with .json extension. */,
     "removeComments": true, 
     "skipLibCheck": true,
+
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitUseStrict": false,
     "allowSyntheticDefaultImports": true,
+    "noStrictGenericChecks": false,
+    "allowJs": true,
+    //"composite": false,
+    
     //"isolatedModules": true,
     //"strict": true /* Enable all strict type-checking options. */,
-    //"noEmit": true,                           /* Do not emit outputs. */
+    //"noEmit": false,                           /* Do not emit outputs. */
     /* Strict Type-Checking Options */
     //"noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
     // "strictNullChecks": true /* Enable strict null checks. */,
@@ -42,7 +49,7 @@
     // "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
     // "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
 
-    "lib": ["es2017"],
+    "lib": ["es2017", "dom"],
     "types": [],
     "typeRoots": ["node_modules/@types", "src/types"],
     "paths": {
@@ -50,6 +57,6 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules/**", "build", "dist", "src/**/*.scss.d.ts"],
+  "exclude": ["node_modules/**", "build", "dist", "src/**/*.scss.d.ts","babel.config.js"],
   "compileOnSave": false
 }

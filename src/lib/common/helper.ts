@@ -1,3 +1,4 @@
+import { Alert, Linking, Platform } from 'react-native';
 import { fromPromise } from '@apollo/client';
 import { store } from '../hocs/withRedux';
 import { sign_out } from '../redux/actions/user';
@@ -6,6 +7,7 @@ import { ApolloError } from '@apollo/client';
 import { goToAuthScreen } from '../nav';
 import gql from 'graphql-tag';
 import UI from '../common/UI';
+import { t } from 'nuudel-utils';
 
 var debounce: any = null;
 const signOut = async (client?: any) => {
@@ -141,4 +143,43 @@ export const onError = (error: any) => {
         : error.message;
   }
   return error;
+};
+
+let _debounce: any = undefined;
+export const dialCall = (phone: string) => {
+  if (__DEV__) {
+    Alert.alert('number: ' + phone, '', [
+      {
+        text: t('Ok'),
+        onPress: () => {},
+      },
+    ]);
+  }
+  if (!phone) {
+    return;
+  }
+  let phoneNumber = phone;
+  if (Platform.OS !== 'android') {
+    phoneNumber = `telprompt:${phone}`;
+  } else {
+    phoneNumber = `tel:${phone}`;
+  }
+  if (!_debounce) {
+    _debounce = setTimeout(() => {
+      Linking.canOpenURL(phoneNumber)
+        .then((supported) => {
+          _debounce = undefined;
+          if (!supported) {
+            console.log('Phone number is not available');
+          } else {
+            Linking.openURL(phoneNumber);
+          }
+        })
+        .catch((err) => {
+          _debounce = undefined;
+          console.log(err);
+        });
+    }, 100);
+  }
+  return _debounce;
 };

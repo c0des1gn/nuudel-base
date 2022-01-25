@@ -1,4 +1,4 @@
-import { Appearance, useColorScheme } from 'react-native';
+import { Appearance } from 'react-native';
 
 const COLOR = {
   BRAND: '#F58C22',
@@ -109,12 +109,11 @@ const LIGHT_COMPONENTS = {
 
 let MODE: any = 'light';
 
-export const setTheme = (
-  mode = useColorScheme(),
-  DARK = DARK_COMPONENTS,
-  LIGHT = LIGHT_COMPONENTS
-) => {
-  var colors = mode === 'dark' ? DARK : LIGHT;
+const setColors = (Colors: any = {}, mode = Appearance.getColorScheme()) => {
+  let colors: any = {
+    ...Colors,
+    ...(mode === 'dark' ? DARK_COMPONENTS : LIGHT_COMPONENTS),
+  };
   if (MODE !== mode) {
     COLORS = colors;
     MODE = mode;
@@ -122,8 +121,6 @@ export const setTheme = (
   return colors;
 };
 
-var COLORS = setTheme(MODE);
+let COLORS: any = setColors();
 
-export { COLORS, MODE };
-
-export default COLORS;
+export { COLORS, MODE, setColors };

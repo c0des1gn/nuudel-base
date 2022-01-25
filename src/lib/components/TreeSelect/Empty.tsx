@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import { View, Platform, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { useTheme } from 'react-native-elements';
-import { useStyles } from './styled';
+import { styles } from './styled';
+import { COLORS, SIZES } from '../../theme';
 
 interface IProps {
   icon?: string;
@@ -16,9 +16,6 @@ export const EmptyList: FC<IProps> = ({
   desc = '',
   ...props
 }) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const [height, setHeight] = useState(200);
   return (
     <View

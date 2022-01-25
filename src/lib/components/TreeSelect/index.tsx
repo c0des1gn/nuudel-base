@@ -4,8 +4,8 @@ import Text from '../Text';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { breadthFirstRecursion } from './menutransform';
 import EmptyList from './Empty';
-import { withTheme } from 'react-native-elements';
-import { getStyle } from './styled';
+import { styles } from './styled';
+import { COLORS, SIZES } from '../../theme';
 import { t } from 'nuudel-utils';
 
 interface ITreeSelectProps {
@@ -21,7 +21,6 @@ interface ITreeSelectProps {
   leafCanBeSelected: boolean;
   onClick(param: any);
   onClickLeaf(param: any);
-  theme?: any;
 }
 
 interface ITreeSelectStates {
@@ -172,8 +171,6 @@ class TreeSelect extends Component<ITreeSelectProps, ITreeSelectStates> {
   };
 
   _renderTreeNodeIcon = (isOpen) => {
-    const { COLORS, SIZES } = this.props?.theme;
-    const styles = getStyle(COLORS, SIZES);
     const {
       isShowTreeId = false,
       selectedItemStyle,
@@ -208,8 +205,6 @@ class TreeSelect extends Component<ITreeSelectProps, ITreeSelectStates> {
   };
 
   _renderRow = ({ item }) => {
-    const { COLORS, SIZES } = this.props?.theme;
-    const styles = getStyle(COLORS, SIZES);
     const { currentNode } = this.state;
     const {
       isShowTreeId = false,
@@ -323,7 +318,6 @@ class TreeSelect extends Component<ITreeSelectProps, ITreeSelectStates> {
   };
 
   _renderSearchBar = () => {
-    const { COLORS, SIZES } = this.props?.theme;
     const { searchValue } = this.state;
     return (
       <View
@@ -358,8 +352,6 @@ class TreeSelect extends Component<ITreeSelectProps, ITreeSelectStates> {
     );
   };
   render() {
-    const { COLORS, SIZES } = this.props?.theme;
-    const styles = getStyle(COLORS, SIZES);
     const { data } = this.props;
     return (
       <View style={styles.container}>
@@ -387,4 +379,4 @@ class TreeSelect extends Component<ITreeSelectProps, ITreeSelectStates> {
   }
 }
 
-export default withTheme(TreeSelect, '');
+export default TreeSelect;

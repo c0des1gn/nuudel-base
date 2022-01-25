@@ -1,13 +1,12 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
 import { Linking, TouchableOpacity } from 'react-native';
-import { Text } from '@Components';
-import { useStyles } from './styled';
+import { Text } from '../../components';
+import { styles } from './styled';
 
 const RNFieldLookupDisplay: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const styles = useStyles(props);
   if (props.value && props.value.length > 0) {
     let value = props.value;
     if (typeof props.value === 'string') {

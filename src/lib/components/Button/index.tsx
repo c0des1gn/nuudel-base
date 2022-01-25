@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Button as BaseButton, ButtonProps } from 'react-native-elements';
 import Text from '../Text';
-import { useStyles } from '../../theme/styles';
+import { styles } from '../../theme/styles';
 import {
   TouchableHighlight,
   TouchableHighlightProps,
@@ -23,7 +23,6 @@ export const Button: FunctionComponent<ButtonProps & IProps> = ({
   titleStyle = {},
   ...props
 }) => {
-  const styles = useStyles(props);
   //const [_debounce, setDebounce] = useState();
   let _debounce: any = undefined;
   useEffect(() => {

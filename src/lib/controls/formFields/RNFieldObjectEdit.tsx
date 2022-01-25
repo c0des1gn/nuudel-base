@@ -6,16 +6,13 @@ import { ControlMode } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
 import { TouchableHighlight, View } from 'react-native';
-import { useStyles } from './styled';
+import { styles } from './styled';
 import { connect } from 'react-redux';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 
 const RNFieldObjectEdit: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   // We need to set value to empty string when null or undefined to force TextField still be used like a controlled component
   const value = props.value ? props.value : '';
   const { disabled } = storeProps(props);

@@ -1,10 +1,10 @@
-import {PixelRatio, Dimensions} from 'react-native';
+import { PixelRatio, Dimensions } from 'react-native';
 
-export const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
-export const BASE = 12;
+const BASE = 12;
 
-const SIZES = {
+export let SIZES: any = {
   FONTFAMILY: 'Open Sans',
   //BASE: BASE,
   FONT: BASE,
@@ -85,4 +85,7 @@ const SIZES = {
   RADIO_THICKNESS: 2,
 };
 
-export default SIZES;
+export const setSizes = (Sizes: any = {}) => {
+  SIZES = { ...Sizes, ...SIZES };
+  return SIZES;
+};

@@ -1,21 +1,18 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
-import { Input } from '@Components';
+import { Input } from '../../components';
 import { ControlMode } from 'nuudel-utils';
 import { t } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
 import { connect } from 'react-redux';
-import { useStyles } from './styled';
+import { styles } from './styled';
 import { getLocale } from './RNFieldDateEdit';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 
 const RNFieldNumberEdit: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   // We need to set value to empty string when null or undefined to force TextField
   // not to be used like an uncontrolled component and keep current value
   const value = props.value ? props.value : '';

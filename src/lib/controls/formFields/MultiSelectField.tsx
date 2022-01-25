@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import MultiSelect, { MultiSelectProps } from 'react-native-multiple-select';
-import { useTheme } from 'react-native-elements';
-import { useStyles } from './styled';
+import { styles } from './styled';
+import { COLORS, SIZES } from '../../theme';
 import { t } from 'nuudel-utils';
 
 //extends MultiSelectProps
@@ -15,9 +15,6 @@ export interface IMultiSelectProps {
 }
 
 export const MultiSelectField: FC<IMultiSelectProps> = ({ ...props }) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const [selectedItems, setSelectedItems] = useState([]);
   const onSelectedItemsChange = (selectedItems) => {
     setSelectedItems(selectedItems);

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
-import { _COLORS, _SIZES } from '../../theme';
+import { COLORS, SIZES } from '../../theme';
 
 export interface IProps {
   style?: any;
@@ -19,7 +19,7 @@ export const Separator: FunctionComponent<IProps> = ({
       {
         width: 1,
         borderLeftWidth: 1,
-        borderLeftColor: color || _COLORS.BORDER_LIGHT,
+        borderLeftColor: color || COLORS.BORDER_LIGHT,
         height: height || 20,
       },
     ]}

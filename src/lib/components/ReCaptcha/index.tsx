@@ -1,5 +1,5 @@
 //react-native-recaptchav3
-import * as React from 'react';
+import React from 'react';
 import ReCaptchaComponent from './ReCaptchaComponent';
 import { CONF } from 'nuudel-utils';
 

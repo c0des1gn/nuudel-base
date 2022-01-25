@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 import { IRNFormFieldProps } from './RNFormField';
 import { Switch } from 'react-native-elements';
 import { View } from 'react-native';
@@ -7,15 +7,12 @@ import { t } from 'nuudel-utils';
 import { ControlMode } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
-import { useStyles } from './styled';
+import { styles } from './styled';
 import { connect } from 'react-redux';
 
 const RNFieldBooleanEdit: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
-  const styles = useStyles(props);
   let value = props.value;
   const { disabled } = storeProps(props);
   if (

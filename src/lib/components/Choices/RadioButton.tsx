@@ -1,6 +1,5 @@
 import React from 'react';
-import { withTheme } from 'react-native-elements';
-import { getStyle } from './styled';
+import { styles } from './styled';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { t } from 'nuudel-utils';
 import {
@@ -13,7 +12,7 @@ import {
   UIManager,
   Image,
 } from 'react-native';
-import { _COLORS, _SIZES } from '../../theme';
+import { COLORS, SIZES } from '../../theme';
 
 interface IRadioForm {
   radio_props: any[];
@@ -36,21 +35,17 @@ interface IRadioForm {
   radioStyle?: any;
   labelStyle?: any;
   onPress(v: string, i: number);
-  theme?: any;
 }
 
 interface IRadioFormState {
   is_active_index: number;
-  styles: any;
 }
 
 class RadioForm extends React.Component<IRadioForm, IRadioFormState> {
   constructor(props) {
     super(props);
-    const { COLORS, SIZES } = props?.theme;
     this.state = {
       is_active_index: props.initial,
-      styles: getStyle(COLORS, SIZES),
     };
     if (Platform.OS === 'android') {
       UIManager.setLayoutAnimationEnabledExperimental &&
@@ -60,13 +55,13 @@ class RadioForm extends React.Component<IRadioForm, IRadioFormState> {
   static defaultProps = {
     radio_props: [],
     initial: 0,
-    buttonColor: _COLORS.PRIMARY,
-    selectedButtonColor: _COLORS.PRIMARY,
+    buttonColor: COLORS.PRIMARY,
+    selectedButtonColor: COLORS.PRIMARY,
     formHorizontal: false,
     labelHorizontal: true,
     animation: true,
-    labelColor: _COLORS.TEXT_DARK,
-    selectedLabelColor: _COLORS.TEXT_DARK,
+    labelColor: COLORS.TEXT_DARK,
+    selectedLabelColor: COLORS.TEXT_DARK,
     wrapStyle: {},
     disabled: false,
     accessible: true,
@@ -85,7 +80,6 @@ class RadioForm extends React.Component<IRadioForm, IRadioFormState> {
   }
 
   _renderButton = (obj, i) => {
-    const { styles } = this.state;
     return (
       <RadioButton
         styles={styles}
@@ -130,7 +124,6 @@ class RadioForm extends React.Component<IRadioForm, IRadioFormState> {
   };
 
   render() {
-    const { styles } = this.state;
     let render_content: any = false;
     if (this.props.radio_props.length) {
       render_content = this.props.radio_props.map(this._renderButton);
@@ -184,8 +177,8 @@ export class RadioButton extends React.Component<IRadioButton, any> {
   }
   static defaultProps = {
     isSelected: false,
-    buttonColor: _COLORS.PRIMARY,
-    selectedButtonColor: _COLORS.PRIMARY,
+    buttonColor: COLORS.PRIMARY,
+    selectedButtonColor: COLORS.PRIMARY,
     labelHorizontal: true,
     disabled: false,
     idSeparator: '|',
@@ -307,13 +300,13 @@ export class RadioButtonInput extends React.Component<
     super(props);
     this.state = {
       isSelected: false,
-      buttonColor: props.buttonColor || _COLORS.PRIMARY,
+      buttonColor: props.buttonColor || COLORS.PRIMARY,
     };
   }
 
   static defaultProps = {
-    buttonInnerColor: _COLORS.PRIMARY,
-    buttonOuterColor: _COLORS.PRIMARY,
+    buttonInnerColor: COLORS.PRIMARY,
+    buttonOuterColor: COLORS.PRIMARY,
     disabled: false,
   };
 
@@ -425,13 +418,13 @@ export class RadioButtonLabel extends React.Component<
     super(props);
     this.state = {
       isSelected: false,
-      buttonColor: _COLORS.PRIMARY,
+      buttonColor: COLORS.PRIMARY,
     };
   }
 
   static defaultProps = {
     isSelected: false,
-    selectedButtonColor: _COLORS.PRIMARY,
+    selectedButtonColor: COLORS.PRIMARY,
   };
 
   render() {
@@ -477,7 +470,7 @@ export class RadioButtonLabel extends React.Component<
             <Icon
               style={styles.icon}
               name={this.props.obj?.icon}
-              size={_SIZES.ICON_LARGE}
+              size={SIZES.ICON_LARGE}
               color={
                 this.props.isSelected
                   ? this.props.selectedButtonColor
@@ -491,4 +484,4 @@ export class RadioButtonLabel extends React.Component<
   }
 }
 
-export default withTheme(RadioForm, '');
+export default RadioForm;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { CheckBox, withTheme } from 'react-native-elements';
-import { getStyle } from './styled';
+import { CheckBox } from 'react-native-elements';
+import { styles } from './styled';
+import { COLORS, SIZES } from '../../theme';
 import Text from '../Text';
 import Item from '../Item';
 import { TouchableOpacity, View, ScrollView } from 'react-native';
@@ -10,14 +11,13 @@ type Mode = 'select' | 'multiselect' | 'pick';
 
 interface IChoicesProps {
   componentId?: string;
-  formHorizontal: boolean;
+  formHorizontal?: boolean;
   style?: any;
   context?: any;
   mode: Mode;
   selected: string[];
   data: IChoicesData[];
   onSubmit?(data);
-  theme?: any;
 }
 
 export interface IChoicesData {
@@ -79,9 +79,6 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
   };
 
   render() {
-    const { COLORS, SIZES } = this.props?.theme;
-    const styles = getStyle(COLORS, SIZES);
-
     const { selected } = this.state;
     let data: any[] = this.props.data;
     if (
@@ -165,4 +162,4 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
   }
 }
 
-export default withTheme(Choices, '');
+export default Choices;

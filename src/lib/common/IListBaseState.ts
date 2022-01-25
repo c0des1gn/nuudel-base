@@ -9,7 +9,7 @@ export interface IListBaseState {
   listname?: string;
 }
 
-interface IProviderCore {
+export interface IProviderCore {
   query?: string;
   listname?: string;
   resources?: string;

@@ -7,7 +7,7 @@ import {
   BackHandler,
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import { NetInfoState } from '@react-native-community/netinfo';
+import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
 import CONF, {
   USER_TOKEN,
   USER_KEY,
@@ -62,7 +62,8 @@ export const DeviceId = {
   os: Platform.OS,
   osVersion: DeviceInfo.getSystemVersion(),
   isTablet: DeviceInfo.isTablet(),
-  //version: DeviceInfo.getVersion(),
+  version: DeviceInfo.getVersion(),
+  buildNumber: DeviceInfo.getBuildNumber(),
   device:
     Platform.OS === 'ios'
       ? IDevices.hasOwnProperty(DeviceInfo.getDeviceId())
@@ -210,4 +211,5 @@ export class UI {
   }
 }
 
+export { NetInfo };
 export default UI;

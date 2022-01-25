@@ -1,23 +1,20 @@
 import React from 'react';
 import { View, Platform } from 'react-native';
 import { IRNFormFieldProps } from './RNFormField';
-import { Lookup } from '@Components';
+import { Lookup } from '../../components';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { ControlMode } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
 import { connect } from 'react-redux';
 import MultiSelectField from './MultiSelectField';
-import { useTheme } from 'react-native-elements';
-import { useStyles } from './styled';
+import { COLORS, SIZES } from '../../theme';
+import { styles } from './styled';
 import { t } from 'nuudel-utils';
 
 const RNFieldChoiceEdit: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
-  const styles = useStyles(props);
   const { disabled } = storeProps(props);
   if (props.fieldSchema.FieldType !== 'MultiChoice') {
     const label = props.label || props.fieldSchema.Title;

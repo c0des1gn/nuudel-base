@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { Text, Label, Item } from '@Components';
+import { Text, Label, Item } from '../../components';
 import { ControlMode } from 'nuudel-utils';
 import { IFieldSchema } from '../../services/datatypes/RenderListData';
 import { DelayedRender } from '../../common/DelayedRender';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 import { t } from 'nuudel-utils';
 
 export interface IFormFieldProps {
@@ -24,8 +24,6 @@ export interface IFormFieldProps {
 }
 
 const FormField: React.FunctionComponent<IFormFieldProps> = (props) => {
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const {
     children,
     disabled,

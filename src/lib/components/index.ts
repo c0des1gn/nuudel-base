@@ -23,6 +23,10 @@ import Signature from './Signature';
 import ButtonGroup from './ButtonGroup';
 import Lookup from './Lookup';
 import DatePicker from './DatePicker';
+import Upload from './Upload';
+import FAB from './FAB';
+import CheckBox from './CheckBox';
+import Switch from './Switch';
 
 export {
   Button,
@@ -53,4 +57,8 @@ export {
   ButtonGroup,
   Lookup,
   DatePicker,
+  Upload,
+  FAB,
+  CheckBox,
+  Switch,
 };

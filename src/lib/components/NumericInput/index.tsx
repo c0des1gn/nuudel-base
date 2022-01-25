@@ -6,15 +6,14 @@ import {
   View,
   KeyboardTypeOptions,
 } from 'react-native';
-import { getStyle } from './styled';
-import { withTheme } from 'react-native-elements';
-import { _COLORS, _SIZES } from '../../theme';
+import { styles } from './styled';
+import { COLORS, SIZES } from '../../theme';
 
 /**
  * Default Color
  * @type {string}
  */
-const defaultColor = _COLORS.TEXT;
+const defaultColor = COLORS.TEXT;
 
 export interface INumericInputProps {
   children?: any;
@@ -68,7 +67,6 @@ export interface INumericInputProps {
   showButtons: boolean;
   focusShowButtons: boolean;
   delay: number;
-  theme?: any;
 }
 
 export interface INumericInputStates {
@@ -123,15 +121,15 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
     backgroundButton: 'transparent',
     colorPress: defaultColor,
     background: 'transparent',
-    textColor: _COLORS.TEXT_DARK,
+    textColor: COLORS.TEXT_DARK,
     arrows: false,
     showBorder: true,
-    fontSize: _SIZES.H6,
-    fontFamily: _SIZES.FONTFAMILY,
-    buttonfontSize: _SIZES.H3,
-    buttonFontFamily: _SIZES.FONTFAMILY,
+    fontSize: SIZES.H6,
+    fontFamily: SIZES.FONTFAMILY,
+    buttonfontSize: SIZES.H3,
+    buttonFontFamily: SIZES.FONTFAMILY,
     buttonTextColor: defaultColor,
-    buttonPressTextColor: _COLORS.BACKGROUND,
+    buttonPressTextColor: COLORS.BACKGROUND,
     disabled: false,
     editable: true,
     width: 175,
@@ -529,7 +527,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*[]}
    * @private
    */
-  _getContainerStyle(styles) {
+  _getContainerStyle() {
     return [
       styles.container,
       {
@@ -544,7 +542,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*[]}
    * @private
    */
-  _getInputTextStyle(styles) {
+  _getInputTextStyle() {
     return [
       styles.numberText,
       {
@@ -587,7 +585,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*[]}
    * @private
    */
-  _getStyleButtonText(styles) {
+  _getStyleButtonText() {
     const lineHeight: number | undefined = !isNaN(
       parseInt(String(this.props.height))
     )
@@ -609,10 +607,10 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*[]}
    * @private
    */
-  _getStyleLeftButtonText(styles) {
+  _getStyleLeftButtonText() {
     return [
       styles.buttonText,
-      this._getStyleButtonText(styles),
+      this._getStyleButtonText(),
       {
         color: this._isLeftButtonPressed()
           ? this._getColorPressText()
@@ -628,10 +626,10 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*[]}
    * @private
    */
-  _getStyleRightButtonText(styles) {
+  _getStyleRightButtonText() {
     return [
       styles.buttonText,
-      this._getStyleButtonText(styles),
+      this._getStyleButtonText(),
       {
         color: this._isRightButtonPressed()
           ? this._getColorPressText()
@@ -647,7 +645,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*}
    * @private
    */
-  _renderLeftButtonElement(styles) {
+  _renderLeftButtonElement() {
     if (this.props.buttonLeftImage) {
       return this.props.buttonLeftImage;
     } else if (this._isLeftButtonPressed() && this.props.buttonPressLeftImage) {
@@ -659,7 +657,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
           : this.props.buttonLeftText
           ? this.props.buttonLeftText
           : '-';
-      return <Text style={this._getStyleLeftButtonText(styles)}>{text}</Text>;
+      return <Text style={this._getStyleLeftButtonText()}>{text}</Text>;
     }
   }
 
@@ -668,7 +666,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*}
    * @private
    */
-  _renderRightButtonElement(styles) {
+  _renderRightButtonElement() {
     if (this.props.buttonRightImage) {
       return this.props.buttonRightImage;
     } else if (
@@ -683,7 +681,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
           : this.props.buttonRightText
           ? this.props.buttonRightText
           : '+';
-      return <Text style={this._getStyleRightButtonText(styles)}>{text}</Text>;
+      return <Text style={this._getStyleRightButtonText()}>{text}</Text>;
     }
   }
 
@@ -692,7 +690,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*}
    * @private
    */
-  _renderLeftButton(styles) {
+  _renderLeftButton() {
     const buttonStyle = [
       this._getStyleButton(),
       {
@@ -717,7 +715,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
         style={buttonStyle}
         onPress={() => this.decrease()}
       >
-        {this._renderLeftButtonElement(styles)}
+        {this._renderLeftButtonElement()}
       </TouchableHighlight>
     );
   }
@@ -727,7 +725,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*}
    * @private
    */
-  _renderRightButton(styles) {
+  _renderRightButton() {
     const buttonStyle = [
       this._getStyleButton(),
       {
@@ -752,7 +750,7 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
         style={buttonStyle}
         onPress={() => this.increase()}
       >
-        {this._renderRightButtonElement(styles)}
+        {this._renderRightButtonElement()}
       </TouchableHighlight>
     );
   }
@@ -779,14 +777,12 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
    * @returns {*}
    */
   render() {
-    const { COLORS, SIZES } = this.props?.theme;
-    const styles = getStyle(COLORS, SIZES);
     return (
-      <View style={this._getContainerStyle(styles)}>
-        {this.state.showButtons ? this._renderLeftButton(styles) : null}
+      <View style={this._getContainerStyle()}>
+        {this.state.showButtons ? this._renderLeftButton() : null}
         {this.props.prepend}
         <TextInput
-          style={this._getInputTextStyle(styles)}
+          style={this._getInputTextStyle()}
           value={this.getValue()}
           editable={this.isEditable()}
           //onEndEditing={this.isEndEditing}
@@ -801,10 +797,10 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
         {this.props.children}
         {this.props.append}
 
-        {this.state.showButtons ? this._renderRightButton(styles) : null}
+        {this.state.showButtons ? this._renderRightButton() : null}
       </View>
     );
   }
 }
 
-export default withTheme(NumericInput, '');
+export default NumericInput;

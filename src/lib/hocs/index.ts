@@ -1,6 +1,7 @@
-import withRedux, {initStore} from './withRedux';
+import withRedux, { initStore, store } from './withRedux';
 import withApollo from './withApollo';
-import withContext, {Context} from './withContext';
+import withReducer from './withReducer';
+import withContext, { Context } from './withContext';
 
 export {
   withRedux,
@@ -8,4 +9,6 @@ export {
   withContext,
   Context,
   initStore,
+  withReducer,
+  store,
 };

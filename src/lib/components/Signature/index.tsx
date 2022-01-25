@@ -12,9 +12,9 @@ import Button from '../Button';
 import Text from '../Text';
 import Pressable from '../Pressable';
 import { t } from 'nuudel-utils';
-import { useTheme, makeStyles } from 'react-native-elements';
 import { SvgXml } from 'react-native-svg';
 import * as crypto from 'crypto-js';
+import { COLORS, SIZES } from '../../theme';
 
 interface Props {
   title?: string;
@@ -29,27 +29,20 @@ const calcHeight = Platform.OS === 'ios' ? width - 25 : width;
 const height = width - 100;
 const columnWidth = Math.ceil(width / 3) - 15;
 
-const getStyle: Function = (COLORS, SIZES): any => {
-  return {
-    preview: {
-      width: width,
-      height: height,
-      backgroundColor: '#F8F8F8',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 0,
-    },
-    text: {
-      fontSize: SIZES.H6,
-      paddingTop: SIZES.PADDING_HALF,
-      paddingHorizontal: SIZES.PADDING_HALF,
-    },
-  };
-};
-
-const useStyles = makeStyles((theme, props?: any) => {
-  const { COLORS, SIZES } = theme as any;
-  return getStyle(COLORS, SIZES);
+const styles = StyleSheet.create({
+  preview: {
+    width: width,
+    height: height,
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 0,
+  },
+  text: {
+    fontSize: SIZES.H6,
+    paddingTop: SIZES.PADDING_HALF,
+    paddingHorizontal: SIZES.PADDING_HALF,
+  },
 });
 
 const style = `.m-signature-pad {box-shadow: none; border: none; } 
@@ -77,9 +70,6 @@ const Signature: React.FC<Props> = ({
   onOK,
   onClear,
 }) => {
-  const styles = useStyles();
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const ref = useRef<SignatureViewRef>(null);
   const [sign, setSign] = useState('');
   const [rating, setRating] = useState(1);

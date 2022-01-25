@@ -4,8 +4,8 @@ import { TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Separator from '../Separator';
 import { Navigation } from 'react-native-navigation';
-import { withTheme } from 'react-native-elements';
 import { styles } from './styled';
+import { COLORS, SIZES } from '../../theme';
 
 interface IMenuBarProps {
   componentId: string;
@@ -13,7 +13,6 @@ interface IMenuBarProps {
   backgroundColor?: string;
   borderColor?: string;
   color?: string;
-  theme?: any;
 }
 
 export interface IMenuBarDate {
@@ -42,7 +41,6 @@ export class MenuBar extends Component<IMenuBarProps, IMenuBarState> {
     });
 
   render() {
-    const { COLORS, SIZES } = this.props?.theme;
     return (
       <View
         style={[
@@ -75,4 +73,4 @@ export class MenuBar extends Component<IMenuBarProps, IMenuBarState> {
   }
 }
 
-export default withTheme(MenuBar, '');
+export default MenuBar;

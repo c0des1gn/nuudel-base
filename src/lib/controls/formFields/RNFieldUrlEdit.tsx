@@ -5,14 +5,11 @@ import { ControlMode } from 'nuudel-utils';
 import { t } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
-import { useStyles } from './styled';
+import { styles } from './styled';
 import { connect } from 'react-redux';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 
 const RNFieldUrlEdit: React.FC<IRNFormFieldProps> = (props) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const { disabled } = storeProps(props);
   return (
     <Input

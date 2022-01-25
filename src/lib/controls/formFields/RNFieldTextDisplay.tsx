@@ -1,12 +1,11 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
-import { Text } from '@Components';
-import { useStyles } from './styled';
+import { Text } from '../../components';
+import { styles } from './styled';
 
 const RNFieldTextDisplay: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const styles = useStyles(props);
   let value: string = props.value
     ? typeof props.value === 'string'
       ? props.value

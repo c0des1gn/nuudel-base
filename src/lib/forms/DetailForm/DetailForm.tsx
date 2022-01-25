@@ -26,11 +26,11 @@ import {
   Form,
   Toast,
   ActionSheet,
-} from '@Components';
+} from '../../components';
 import { onError } from '../../common/helper';
 import { Alert, View, Dimensions, Keyboard } from 'react-native';
 import { getRegex } from './regex';
-import { withTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 
 export interface IFormState extends ICoreState {
   loading: boolean;
@@ -137,7 +137,6 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
   }
 
   public render(): React.ReactElement<IFormProps> {
-    const { COLORS, SIZES } = this.props?.theme;
     return (
       <Provider store={this._store}>
         {this.state.loading && <Spinner />}
@@ -202,7 +201,7 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
             this.state.fieldsSchema && (
               <View>
                 {this.props.children}
-                <Form>{this.renderFields(COLORS)}</Form>
+                <Form>{this.renderFields()}</Form>
                 {this.props.formType === ControlMode.Edit &&
                   this.props.permission === Permission.Remove && (
                     <Button
@@ -236,7 +235,7 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
     }
   }
 
-  protected renderFields(COLORS) {
+  protected renderFields() {
     const { fieldsSchema, data, fieldErrors } = this.state;
     const fields = this.getFields();
     const fld = this._store.getState().fields;
@@ -602,4 +601,4 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
   }
 }
 
-export default withTheme(DetailForm, '');
+export default DetailForm;

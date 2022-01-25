@@ -1,9 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 import { IRNFormFieldProps } from './RNFormField';
 import { ControlMode } from 'nuudel-utils';
-import { DatePicker } from '@Components';
+import { DatePicker } from '../../components';
 import { t } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
@@ -22,8 +22,6 @@ export const getLocale = (attr: string = 'languageTag'): string => {
 };
 
 const RNFieldDateEdit: React.FunctionComponent<IRNFormFieldProps> = (props) => {
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const locale = getLocale();
   const { disabled } = storeProps(props);
   let value = props.value ? props.value : null;

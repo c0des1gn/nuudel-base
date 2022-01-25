@@ -1,8 +1,8 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
 import { Image, View, Dimensions } from 'react-native';
-import { Text } from '@Components';
-import { useStyles } from './styled';
+import { Text } from '../../components';
+import { styles } from './styled';
 import { t } from 'nuudel-utils';
 
 const { width } = Dimensions.get('window');
@@ -10,7 +10,6 @@ const { width } = Dimensions.get('window');
 const RNFieldImageDisplay: React.FunctionComponent<IRNFormFieldProps> = (
   props
 ) => {
-  const styles = useStyles(props);
   if (!!props.value && props.value instanceof Array) {
     if (props.value.length > 0) {
       return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
-import { _COLORS, _SIZES } from '../../theme';
+import { COLORS, SIZES } from '../../theme';
 
 interface IProps extends ActivityIndicatorProps {
   overflowHide: boolean;
@@ -10,7 +10,7 @@ interface IProps extends ActivityIndicatorProps {
 class Spinner extends React.Component<IProps> {
   static defaultProps = {
     size: 'large',
-    color: _COLORS.LOADER,
+    color: COLORS.LOADER,
     animating: true,
     hidesWhenStopped: true,
     overflowHide: false,

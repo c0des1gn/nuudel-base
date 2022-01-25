@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Platform } from 'react-native';
-import { Lookup } from '@Components';
+import { Lookup } from '../../components';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import MultiSelectField from './MultiSelectField';
 import { ControlMode } from 'nuudel-utils';

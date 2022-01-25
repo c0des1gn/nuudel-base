@@ -1,7 +1,7 @@
 // React and react native imports
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { _COLORS, _SIZES } from '../../theme/';
+import { COLORS, SIZES } from '../../theme/';
 //import { View as AnimatableView } from 'react-native-animatable';
 
 // Local file imports
@@ -43,16 +43,16 @@ class StarRating extends Component<IStarRating, any> {
     style: {},
     disabled: false,
     emptyStar: 'star-empty',
-    emptyStarColor: _COLORS.ICON_LIGHT,
+    emptyStarColor: COLORS.ICON_LIGHT,
     fullStar: 'star-1',
-    fullStarColor: _COLORS.ICON,
+    fullStarColor: COLORS.ICON,
     halfStar: 'star-half-alt',
     halfStarColor: undefined,
     halfStarEnabled: false,
     maxStars: 5,
     rating: 0,
     reversed: false,
-    starSize: _SIZES.H4,
+    starSize: SIZES.H4,
     starStyle: {},
     selectedStar: () => {},
   };

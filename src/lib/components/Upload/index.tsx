@@ -1,12 +1,12 @@
 import React from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
-import { Button, Text, Toast, ActionSheet } from '@Components';
+import { Button, Text, Toast, ActionSheet } from '../../components';
 import { Image, View, TouchableOpacity } from 'react-native';
 import { t } from 'nuudel-utils';
 import { ControlMode, HOST, HttpClient } from 'nuudel-utils';
 import UI from '../../common/UI';
-import { getStyle } from './styled';
-import { withTheme } from 'react-native-elements';
+import { styles } from '../../theme/styles';
+import { COLORS, SIZES } from '../../theme';
 
 export interface IImagePickerProps {
   value: any;
@@ -15,7 +15,6 @@ export interface IImagePickerProps {
   placeholder?: string;
   valueChanged(value: any);
   styleImage?: any;
-  theme?: any;
 }
 
 export interface IImagePickerState {
@@ -173,8 +172,6 @@ class ImagePickerField extends React.Component<
   };
 
   public render() {
-    const { COLORS, SIZES } = this.props?.theme;
-    const styles = getStyle(COLORS, SIZES);
     return (
       <View style={styles.picture}>
         <Toast ref={(ref: any) => (this._ref.current = ref)} />
@@ -265,4 +262,4 @@ class ImagePickerField extends React.Component<
   }
 }
 
-export default withTheme(ImagePickerField, '');
+export default ImagePickerField;

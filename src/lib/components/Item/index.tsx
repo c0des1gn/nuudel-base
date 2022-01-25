@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useStyles } from '../../theme/styles';
+import { styles } from '../../theme/styles';
 import { StyleSheet, View } from 'react-native';
 
 interface IItemProps {
@@ -8,7 +8,6 @@ interface IItemProps {
 }
 
 export const Item: FC<IItemProps> = ({ children, ...props }) => {
-  const styles = useStyles(props);
   return (
     <View {...props} style={StyleSheet.flatten([styles.Item, props.style])}>
       {children}

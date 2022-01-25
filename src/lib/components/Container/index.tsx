@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { useStyles } from '../../theme/styles';
+import { styles } from '../../theme/styles';
 import { StyleSheet, View } from 'react-native';
-import { useTheme } from 'react-native-elements';
+import { COLORS, SIZES } from '../../theme';
 
 export interface IProps {
   children: any;
@@ -14,9 +14,6 @@ export const Container: FC<IProps> = ({
   isCenter = undefined,
   ...props
 }) => {
-  const styles = useStyles(props);
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const styleCenter =
     typeof isCenter !== 'undefined'
       ? {

@@ -5,7 +5,7 @@ import { IFieldSchema } from '../../services/datatypes/RenderListData';
 import { t } from 'nuudel-utils';
 import FormField, { IFormFieldProps } from './FormField';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { Label, Text, Input } from '@Components';
+import { Label, Text, Input } from '../../components';
 
 import RNFieldTextEdit from './RNFieldTextEdit';
 import RNFieldChoiceEdit from './RNFieldChoiceEdit';

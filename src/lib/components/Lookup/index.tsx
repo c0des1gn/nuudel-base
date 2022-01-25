@@ -2,11 +2,11 @@ import React, { FC, useState, CSSProperties } from 'react';
 import { View, Platform, Text, Keyboard, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { Navigation } from 'react-native-navigation';
-import { useStyles } from '../../theme/styles';
+import { styles } from '../../theme/styles';
 import { Picker } from '@react-native-picker/picker';
-import { useTheme } from 'react-native-elements';
 import { t } from 'nuudel-utils';
 import { OVERLAY_SCREEN } from '../../system_screens';
+import { COLORS, SIZES } from '../../theme';
 
 interface ILookupProps {
   title?: string;
@@ -25,8 +25,6 @@ interface IPickerItem {
 
 const height = 250;
 const Dropdown = ({ ...props }) => {
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const [selectedValue, setSelectedValue] = useState(props.value);
   return (
     <Picker
@@ -65,8 +63,6 @@ const Dropdown = ({ ...props }) => {
 };
 
 export const Lookup: FC<ILookupProps> = ({ style, ...props }) => {
-  const { theme } = useTheme();
-  const { COLORS, SIZES } = theme as any;
   const showOverlay = () => {
     Keyboard.dismiss();
     Navigation.showOverlay({
