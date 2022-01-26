@@ -28,7 +28,11 @@ export const ActionSheet: React.FC<IActionSheetProps> = (
   return (
     <BottomSheet
       isVisible={isVisible}
-      containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.1)' }}
+      containerStyle={{
+        //zIndex: 999,
+        //elevation: 999,
+        backgroundColor: 'rgba(0.5, 0.25, 0, 0.1)',
+      }}
     >
       {!!props.title && <ListItem.Title>{props.title}</ListItem.Title>}
       {props.list.map((l: ISheetItemProps, i: number) => (

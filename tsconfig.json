@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "esnext",
-    "jsx": "react-native",
+    "target": "es2017",
+    "jsx": "react",
     "outDir": "build/main",
     "rootDir": "src",
     "baseUrl": ".",
@@ -53,6 +53,7 @@
     "types": [],
     "typeRoots": ["node_modules/@types", "src/types"],
     "paths": {
+      "nuudel-base": ["src/index"],
       "@Components": ["src/lib/components"],
     }
   },
