@@ -99,5 +99,6 @@ export * from './lib/redux/store';
 export * from './lib/redux/reduxCore';
 export * from './lib/redux/actions/user';
 
-export { compose, Dispatch } from 'redux';
 export { connect } from 'react-redux';
+export { compose } from 'redux';
+export type { Dispatch } from 'redux';
