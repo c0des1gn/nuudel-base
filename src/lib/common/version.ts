@@ -18,13 +18,13 @@
  * - NaN if either version string is in the wrong format
  */
 
-export const versionCompare = function(
+export const versionCompare = function (
   v1: string,
   v2: string,
   options = {
     lexicographical: false,
     zeroExtend: true,
-  },
+  }
 ) {
   let lexicographical: boolean = (options && options.lexicographical) || false,
     zeroExtend: boolean = (options && options.zeroExtend) || true,
@@ -45,16 +45,16 @@ export const versionCompare = function(
   }
 
   if (!lexicographical) {
-    v1parts = v1parts.map(function(x) {
+    v1parts = v1parts.map(function (x) {
       var match = /[A-Za-zαß]/.exec(x);
       return Number(
-        match ? x.replace(match[0], '.' + x.charCodeAt(match.index)) : x,
+        match ? x.replace(match[0], '.' + x.charCodeAt(match.index)) : x
       );
     });
-    v2parts = v2parts.map(function(x) {
+    v2parts = v2parts.map(function (x) {
       var match = /[A-Za-zαß]/.exec(x);
       return Number(
-        match ? x.replace(match[0], '.' + x.charCodeAt(match.index)) : x,
+        match ? x.replace(match[0], '.' + x.charCodeAt(match.index)) : x
       );
     });
   }

@@ -1,6 +1,9 @@
 import React from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
-import { Button, Text, Toast, ActionSheet } from '../../components';
+import { Button } from '../Button';
+import { Toast } from '../Toast';
+import Text from '../Text';
+import ActionSheet from '../ActionSheet';
 import { Image, View, TouchableOpacity } from 'react-native';
 import { t } from 'nuudel-utils';
 import { ControlMode, HOST, HttpClient } from 'nuudel-utils';

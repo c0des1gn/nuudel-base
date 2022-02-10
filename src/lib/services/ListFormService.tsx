@@ -12,13 +12,14 @@ import {
   GraphQLError,
 } from 'graphql';
 import { fromIntrospectionQuery } from 'graphql-2-json-schema';
-import { traverse, getPlural, capitalizeFirstLetter, URL } from 'nuudel-utils';
+import { traverse, getPlural, capitalizeFirstLetter } from 'nuudel-utils';
+import { getURL } from '../common/UI';
 import { onErrors, clientError, onError } from '../common/helper';
 import { GetSchema, URI } from '../services/graphqlSchema';
 
 export var schema: GraphQLSchema | null = null;
 export const getSchema = async (
-  uri: string = URL
+  uri: string = getURL()
 ): Promise<GraphQLSchema | null> => {
   return schema || (schema = ListFormService.schema = await GetSchema(uri));
 };
@@ -171,6 +172,7 @@ export class ListFormService implements IListFormService {
   ) {
     let columns: any[] = [];
     if (!ListFormService.schema) {
+      const URL = getURL();
       try {
         if (URI !== URL) {
           ListFormService.schema = await getSchema(URL);

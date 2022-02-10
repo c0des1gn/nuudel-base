@@ -14,7 +14,9 @@ import CONF, {
   INIT_DATA,
   setHost,
   domainFixer,
-  pathname,
+  HOST,
+  URL,
+  setConf,
 } from 'nuudel-utils';
 //import PushNotification from 'react-native-push-notification';
 //import CodePush from 'react-native-code-push';
@@ -77,10 +79,11 @@ export const isIpad =
 export const { width, height } = Dimensions.get('window');
 
 export const getHost = async (): Promise<string> => {
-  let domain = '';
+  let host = undefined;
   const username = await UI.getItem(USER_KEY);
   if (__DEV__ || username?.includes('@')) {
-    domain = domainFixer(username?.split('@').pop());
+    let domain = domainFixer(username?.split('@').pop());
+    host = makeHost(domain);
     let data = await UI.getItem(INIT_DATA);
     let r = JSON.parse(data || '{}');
     if (r?.getAllConfig && r.getAllConfig?.length > 0) {
@@ -96,24 +99,28 @@ export const getHost = async (): Promise<string> => {
         location: r.getAllConfig[0].location,
         web: r.getAllConfig[0].web,
         phone: r.getAllConfig[0].phone,
-        base_url: __DEV__ ? r.getAllConfig[0].base_url : `https://${domain}`,
+        base_url: __DEV__ ? r.getAllConfig[0].base_url : host,
       };
-      setHost(_conf.base_url);
+      host = _conf.base_url;
+      //setConf(_conf);
     }
   }
-  return domain;
+  return host;
 };
 
-export const makeUrl = (
-  domain?: string,
-  URL = '',
+export const makeHost = (
+  domain: string,
   protocol = 'https',
-  port?: number
+  port: string = ''
 ) => {
   if (!domain?.includes('.')) {
-    return URL;
+    return HOST;
   }
-  return `${protocol}://${domain}${!port ? '' : ':' + port}/${pathname}`;
+  return `${protocol}://${domain}${!port ? '' : port}`;
+};
+
+export const getURL = (): string => {
+  return URL;
 };
 
 export class UI {

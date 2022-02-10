@@ -7,8 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider } from '@apollo/react-hooks';
-import UI from '../../common/UI';
-import { URL, setHost } from 'nuudel-utils';
+import { UI, getURL } from '../../common/UI';
 import { AppearanceProvider } from '../../common/AppearanceProvider';
 import { ListFormService } from '../../services/ListFormService';
 import { IListFormService } from '../../services/IListFormService';
@@ -19,6 +18,7 @@ import { Appearance } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 import { theme } from '../../theme';
 import { GetSchema, URI } from '../../services/graphqlSchema';
+import { setHost, URL } from 'nuudel-utils';
 
 const cache = new InMemoryCache({
   addTypename: false,
@@ -36,20 +36,15 @@ const defaultOptions: DefaultOptions = {
 };
 
 var client: any = undefined;
-export const createClient = (domain?: string) => {
-  let uri = URL;
-  if (domain?.includes('.') && client) {
-    client = undefined;
-    uri = setHost(`https://${domain}`);
-  } else {
-    uri = setHost();
-    // for no login with token user
-    if (typeof domain === 'string') {
-      client = undefined;
-    }
+export const createClient = (host?: string) => {
+  let uri = getURL(),
+    tmp_url = '';
+  if (!!host) {
+    tmp_url = uri;
+    setHost(host);
+    uri = URL;
   }
-
-  if (client) {
+  if (uri === tmp_url && !!client) {
     return client;
   }
   let authLink = setContext(async (_, { headers }) => {
@@ -73,23 +68,22 @@ export const createClient = (domain?: string) => {
   });
 
   // reinit all provider
-  if (typeof domain === 'string') {
-    if (URI !== URL) {
-      GetSchema(uri)
-        .then((sch) => {
-          ListFormService.schema = sch;
-        })
-        .catch(() => {});
-    }
-    lfs = new ListFormService(client);
-    _dataProvider = new DataProvider(lfs);
+  if (uri !== URI || !ListFormService.schema) {
+    GetSchema(uri)
+      .then((sch) => {
+        ListFormService.schema = sch;
+      })
+      .catch(() => {});
   }
+  lfs = new ListFormService(client);
+  _dataProvider = new DataProvider(lfs);
+
   return client;
 };
-client = createClient();
+//client = createClient();
 
-export var lfs: IListFormService = new ListFormService(client);
-export var _dataProvider: IDataProvider = new DataProvider(lfs);
+export var lfs: IListFormService = null; //new ListFormService(client);
+export var _dataProvider: IDataProvider = null; //new DataProvider(lfs);
 
 const withApollo = (WrappedComponent: ComponentType | any) => (props: any) => {
   /*

@@ -5,7 +5,7 @@ import {
   buildClientSchema,
   GraphQLSchema,
 } from 'graphql';
-import { UI, getHost, makeUrl } from '../common/UI';
+import { UI } from '../common/UI';
 import { Alert } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { t, HttpClient, USER_KEY, USER_TOKEN } from 'nuudel-utils';
@@ -63,12 +63,7 @@ const checkSchema = () => {
 export let URI: string = '';
 export const GetSchema = async (url: string): Promise<GraphQLSchema | null> => {
   let clientSchema: GraphQLSchema | null = null;
-  if (!url?.includes('.')) {
-    let domain = await getHost();
-    url = !domain ? url : makeUrl(domain);
-  }
   URI = url;
-  //console.log('===================', url);
   try {
     const json = await HttpClient(url, {
       method: 'POST',

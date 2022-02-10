@@ -19,7 +19,6 @@ import Choices from './Choices';
 import Pressable from './Pressable';
 import ReCaptcha from './ReCaptcha';
 import ActionSheet from './ActionSheet';
-import Signature from './Signature';
 import ButtonGroup from './ButtonGroup';
 import Lookup from './Lookup';
 import DatePicker from './DatePicker';
@@ -53,7 +52,6 @@ export {
   Pressable,
   ReCaptcha,
   ActionSheet,
-  Signature,
   ButtonGroup,
   Lookup,
   DatePicker,
