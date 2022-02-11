@@ -8,15 +8,13 @@ import {
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
-import CONF, {
+import {
   USER_TOKEN,
   USER_KEY,
   INIT_DATA,
-  setHost,
   domainFixer,
   HOST,
   URL,
-  setConf,
 } from 'nuudel-utils';
 //import PushNotification from 'react-native-push-notification';
 //import CodePush from 'react-native-code-push';
@@ -87,22 +85,7 @@ export const getHost = async (): Promise<string> => {
     let data = await UI.getItem(INIT_DATA);
     let r = JSON.parse(data || '{}');
     if (r?.getAllConfig && r.getAllConfig?.length > 0) {
-      const _conf = {
-        ...CONF,
-        minVersion: r.getAllConfig[0].minVersion || '1.0.0',
-        active: r.getAllConfig[0].active,
-        site_title: r.getAllConfig[0].site_title,
-        site_description: r.getAllConfig[0].site_description,
-        site_keywords: r.getAllConfig[0].site_keywords,
-        posts_per_page: r.getAllConfig[0].posts_per_page,
-        logo: r.getAllConfig[0].logo,
-        location: r.getAllConfig[0].location,
-        web: r.getAllConfig[0].web,
-        phone: r.getAllConfig[0].phone,
-        base_url: __DEV__ ? r.getAllConfig[0].base_url : host,
-      };
-      host = _conf.base_url;
-      //setConf(_conf);
+      host = __DEV__ ? r.getAllConfig[0].base_url : host;
     }
   }
   return host;
