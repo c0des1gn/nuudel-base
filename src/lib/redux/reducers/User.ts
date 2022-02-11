@@ -1,6 +1,6 @@
 import * as CONST from '../constants';
 import { IRootState, IRootAction } from './index';
-import { Theme } from 'nuudel-utils';
+import { Theme, MarketType } from 'nuudel-utils';
 import { Appearance } from 'react-native';
 
 export const initialState: IUserProps = {
@@ -10,6 +10,10 @@ export const initialState: IUserProps = {
   type: 'Guest',
   theme: Appearance.getColorScheme() === 'dark' ? 'dark' : 'light',
   status: 'Active',
+  currency: 'MNT',
+  rates: [],
+  filters: {},
+  market: MarketType.Ebay,
 };
 export interface IUserProps {
   userId: string;
@@ -18,6 +22,10 @@ export interface IUserProps {
   type: string;
   theme: Theme;
   status: string;
+  currency: string;
+  rates?: any;
+  filters?: any;
+  market?: MarketType;
 }
 
 export default (state = initialState, action: IRootAction) => {
