@@ -98,6 +98,7 @@ export * from './lib/services/graphqlSchema';
 export * from './lib/redux/store';
 export * from './lib/redux/reduxCore';
 export * from './lib/redux/actions/user';
+export * from './lib/redux/reducers/User';
 
 export { connect } from 'react-redux';
 export { compose } from 'redux';

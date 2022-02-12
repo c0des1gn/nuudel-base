@@ -32,7 +32,7 @@ export const Button: FunctionComponent<ButtonProps & IProps> = ({
     };
   }, []);
 
-  const onClick = (e: any) => {
+  const onClick = (e?: any) => {
     if (timeout) {
       if (!_debounce) {
         props.onPress && props.onPress(e);
