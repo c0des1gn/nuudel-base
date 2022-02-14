@@ -21,8 +21,8 @@ let theme: any = {
   },
 };
 
-const changeTheme = (_theme: any) => {
-  theme = _theme;
+const changeTheme = (_theme: any = {}) => {
+  theme = { ..._theme };
 };
 
 export { theme, changeTheme };

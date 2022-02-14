@@ -1,4 +1,4 @@
-import React, { ComponentType, useState } from 'react';
+import React, { ComponentType } from 'react';
 import {
   ApolloClient,
   DefaultOptions,
@@ -86,19 +86,10 @@ export var lfs: IListFormService = null; //new ListFormService(client);
 export var _dataProvider: IDataProvider = null; //new DataProvider(lfs);
 
 const withApollo = (WrappedComponent: ComponentType | any) => (props: any) => {
-  /*
-  const [iclient, setClient] = useState(createClient());
-  const handleNewClient = () => {
-    if (iclient) {
-      iclient.clearStore();
-    }
-    client = createClient();
-    setClient(client);
-  }; // */
   return (
     <AppearanceProvider>
       <ThemeProvider
-        theme={theme}
+        //theme={theme}
         useDark={Appearance.getColorScheme() === 'dark'}
       >
         <ApolloProvider client={client}>
@@ -108,7 +99,5 @@ const withApollo = (WrappedComponent: ComponentType | any) => (props: any) => {
     </AppearanceProvider>
   );
 };
-
-//withApollo.reInit = (uri: string) => createClient(uri);
 
 export default withApollo;

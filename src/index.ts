@@ -25,27 +25,12 @@ import {
   IProviderCore,
 } from './lib/common/IListBaseState';
 
-// Core
-import {
-  withRedux,
-  withApollo,
-  withContext,
-  withReducer,
-  Context,
-  initStore,
-  store,
-} from './lib/hocs/index';
-
 import { createClient, _dataProvider, lfs } from './lib/hocs/withApollo';
 
+// Core
+export * from './lib/hocs';
+
 export {
-  withRedux,
-  withApollo,
-  withContext,
-  withReducer,
-  Context,
-  initStore,
-  store,
   ListFormService,
   GetSchema,
   DetailForm,

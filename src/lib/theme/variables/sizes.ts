@@ -5,7 +5,7 @@ const { width } = Dimensions.get('window');
 const BASE = 12;
 
 export let SIZES: any = {
-  FONTFAMILY: 'Open Sans',
+  FONTFAMILY: 'Open Sans', //Roboto
   //BASE: BASE,
   FONT: BASE,
   OPACITY: 0.6,
@@ -86,6 +86,6 @@ export let SIZES: any = {
 };
 
 export const setSizes = (Sizes: any = {}) => {
-  SIZES = { ...Sizes, ...SIZES };
+  SIZES = { ...SIZES, ...Sizes };
   return SIZES;
 };
