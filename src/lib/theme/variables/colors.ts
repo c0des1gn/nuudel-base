@@ -111,8 +111,8 @@ let MODE: any = 'light';
 
 const setColors = (Colors: any = {}, mode = Appearance.getColorScheme()) => {
   let colors: any = {
-    ...Colors,
     ...(mode === 'dark' ? DARK_COMPONENTS : LIGHT_COMPONENTS),
+    ...Colors,
   };
   if (MODE !== mode) {
     COLORS = colors;
