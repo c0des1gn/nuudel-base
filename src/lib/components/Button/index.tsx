@@ -62,7 +62,7 @@ export const Button: FunctionComponent<ButtonProps & IProps> = ({
       )}
       titleStyle={[styles.ButtonText, titleStyle]}
     >
-      {React.isValidElement(children) ? (
+      {React.isValidElement(children) || typeof children !== 'string' ? (
         children
       ) : (
         <Text style={[styles.ButtonText, titleStyle]}>{children}</Text>
