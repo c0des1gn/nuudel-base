@@ -43,30 +43,29 @@ export interface ILoadingProps {
 
 const getComponent = (name: string = 'Flow') => {
   let component: any = undefined;
-  if ('Plane') {
+  if (name === 'Plane') {
     component = Plane;
-  } else if ('Pulse') {
+  } else if (name === 'Pulse') {
     component = Pulse;
-  } else if ('Bounce') {
+  } else if (name === 'Bounce') {
     component = Bounce;
-  } else if ('Swing') {
+  } else if (name === 'Swing') {
     component = Swing;
-  } else if ('Chase') {
+  } else if (name === 'Chase') {
     component = Chase;
-  } else if ('Wave') {
+  } else if (name === 'Wave') {
     component = Wave;
-  } else if ('Circle') {
+  } else if (name === 'Circle') {
     component = Circle;
-  } else if ('CircleFade') {
+  } else if (name === 'CircleFade') {
     component = CircleFade;
-  } else if ('Grid') {
+  } else if (name === 'Grid') {
     component = Grid;
-  } else if ('Fold') {
+  } else if (name === 'Fold') {
     component = Fold;
-  } else if ('Wander') {
+  } else if (name === 'Wander') {
     component = Wander;
   } else {
-    // Flow
     component = Flow;
   }
   return component;
@@ -77,9 +76,10 @@ export const Loading: React.FC<ILoadingProps> = ({
   color = COLORS.ICON_LIGHT,
   animating = true,
   hidesWhenStopped = true,
+  spinner = 'Flow',
   ...props
 }) => {
-  const Spinner = getComponent(props.spinner);
+  const Spinner = getComponent(spinner);
   return props?.overflowHide === true ? (
     <Spinner
       size={size}
