@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   Button: {
     borderRadius: SIZES.BUTTON_BORDER_RADIUS,
-    backgroundColor: COLORS.BUTTON,
+    //backgroundColor: COLORS.BUTTON,
     fontFamily: SIZES.FONTFAMILY,
     overflow: 'hidden',
   },
