@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Platform, StyleSheet, Pressable } from 'react-native';
+import { Platform, StyleSheet, Pressable, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import RnDatePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
@@ -20,6 +20,20 @@ const styles = StyleSheet.create({
     paddingLeft: SIZES.PADDING_HALF,
     color: COLORS.TEXT,
     fontSize: SIZES.BIG,
+  },
+  box: {
+    height: 35,
+    marginVertical: SIZES.PADDING,
+    paddingHorizontal: SIZES.PADDING_HALF,
+    alignSelf: 'stretch',
+    borderColor: COLORS.BORDER_LIGHT,
+    borderWidth: SIZES.BORDER_WIDTH,
+    backgroundColor: COLORS.BACKGROUND_GREY,
+    borderRadius: SIZES.BORDER_RADIUS,
+  },
+  press: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
@@ -46,7 +60,7 @@ export const DatePicker: FC<IDatePickerProps> = ({
   );
 
   const showDatepicker = () => {
-    if (props.disabled !== true) {
+    if (props?.disabled !== true) {
       setShow(true);
     }
   };
@@ -73,26 +87,22 @@ export const DatePicker: FC<IDatePickerProps> = ({
           style={[styles.date, style]}
         />
       ) : (
-        <Pressable
-          onPress={showDatepicker}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}
-        >
-          <Text style={[styles.text, styleText]}>
-            {dateToString(
-              value,
-              mode === 'datetime' ? 'YYYY/MM/DD HH:mm' : 'YYYY/MM/DD'
-            )}
-          </Text>
-          <Icon
-            onPress={showDatepicker}
-            name={'arrow-down'}
-            size={SIZES.BIG}
-            color={COLORS.PRIMARY}
-          />
-        </Pressable>
+        <View style={styles.box}>
+          <Pressable onPress={showDatepicker} style={styles.press}>
+            <Text style={[styles.text, styleText]}>
+              {dateToString(
+                value,
+                mode === 'datetime' ? 'YYYY/MM/DD HH:mm' : 'YYYY/MM/DD'
+              )}
+            </Text>
+            <Icon
+              onPress={showDatepicker}
+              name={'arrow-down'}
+              size={SIZES.BIG}
+              color={COLORS.PRIMARY}
+            />
+          </Pressable>
+        </View>
       )}
     </>
   );
