@@ -5,6 +5,7 @@ import RnDatePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { dateToString } from 'nuudel-utils';
 import { COLORS, SIZES } from '../../theme';
+import { t } from 'nuudel-utils';
 
 const styles = StyleSheet.create({
   date: {
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
 });
 
 export interface IDatePickerProps {
-  locale?: string;
+  locale?: string; // en-US
   disabled?: boolean;
   defaultDate?: Date;
   placeHolderText?: string;
@@ -46,6 +47,7 @@ export interface IDatePickerProps {
   onDateChange?(e?: any);
   style?: any;
   styleText?: any;
+  textColor?: string;
 }
 
 export const DatePicker: FC<IDatePickerProps> = ({
@@ -93,7 +95,9 @@ export const DatePicker: FC<IDatePickerProps> = ({
               {dateToString(
                 value,
                 mode === 'datetime' ? 'YYYY/MM/DD HH:mm' : 'YYYY/MM/DD'
-              )}
+              ) ||
+                props?.placeHolderText ||
+                t('Select Date')}
             </Text>
             <Icon
               onPress={showDatepicker}

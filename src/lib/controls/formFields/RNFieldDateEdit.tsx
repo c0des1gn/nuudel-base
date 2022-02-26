@@ -40,6 +40,7 @@ const RNFieldDateEdit: React.FunctionComponent<IRNFormFieldProps> = (props) => {
       //ariaLabel={props.fieldSchema.Title}
       locale={getLocale('languageCode')}
       //firstDayOfWeek={props.fieldSchema.FirstDayOfWeek}
+      textColor={COLORS.LINK}
       placeHolderTextStyle={{
         color: COLORS.PLACEHOLDER,
         backgroundColor: COLORS.BACKGROUND,
