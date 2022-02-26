@@ -12,8 +12,12 @@ import { setRoot } from './services/navigation';
 export const goToAuthScreen = async (
   guestlogin: boolean = false,
   autologin: boolean = false,
-  SCREEN: any = SIGN_IN_SCREEN
+  SCREEN: any = SIGN_IN_SCREEN,
+  options?: any
 ) => {
+  if (options) {
+    Navigation.setDefaultOptions(options);
+  }
   let username = await UI.getItem(USER_KEY);
   if (!username) {
     username = '';

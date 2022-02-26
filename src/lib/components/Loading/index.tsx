@@ -32,13 +32,13 @@ type ISpinner =
   | 'Wander';
 
 export interface ILoadingProps {
-  size: number;
-  color: string;
-  animating: boolean;
-  hidesWhenStopped: boolean;
+  size?: number;
+  color?: string;
+  animating?: boolean;
+  hidesWhenStopped?: boolean;
   style?: StyleProp<any>;
-  overflowHide: boolean;
-  spinner?: ISpinner;
+  overflowHide?: boolean;
+  name?: ISpinner;
 }
 
 const getComponent = (name: string = 'Flow') => {
@@ -76,10 +76,10 @@ export const Loading: React.FC<ILoadingProps> = ({
   color = COLORS.ICON_LIGHT,
   animating = true,
   hidesWhenStopped = true,
-  spinner = 'Flow',
+  name = 'Flow',
   ...props
 }) => {
-  const Spinner = getComponent(spinner);
+  const Spinner = getComponent(name);
   return props?.overflowHide === true ? (
     <Spinner
       size={size}

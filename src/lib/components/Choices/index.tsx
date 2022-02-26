@@ -18,6 +18,7 @@ interface IChoicesProps {
   selected: string[];
   data: IChoicesData[];
   onSubmit?(data);
+  disabled?: boolean;
 }
 
 export interface IChoicesData {
@@ -94,6 +95,7 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
           data.map((item, i) => (
             <Item key={i} style={styles.item}>
               <CheckBox
+                disabled={this.props.disabled == true}
                 activeOpacity={0.7}
                 checkedColor={COLORS.PRIMARY}
                 style={styles.checkBox}
@@ -121,6 +123,7 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
             {data.map((item, i) => (
               <View key={i} style={styles.pick}>
                 <TouchableOpacity
+                  disabled={this.props.disabled == true}
                   style={[
                     styles.pickitem,
                     selected.indexOf(item.value) >= 0 && styles.selectedItem,
@@ -141,6 +144,7 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
           </ScrollView>
         ) : (
           <RadioForm
+            disabled={this.props.disabled == true}
             radio_props={data}
             initial={
               selected.length > 0

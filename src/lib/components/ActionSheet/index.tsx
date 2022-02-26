@@ -39,8 +39,9 @@ export const ActionSheet: React.FC<IActionSheetProps> = (
         <ListItem
           key={String(i)}
           containerStyle={l.containerStyle}
-          hasTVPreferredFocus
-          tvParallaxProperties
+          onPress={l.onPress}
+          hasTVPreferredFocus={false}
+          tvParallaxProperties={false}
         >
           <ListItem.Content>
             <ListItem.Title style={l.titleStyle}>{l.title}</ListItem.Title>
