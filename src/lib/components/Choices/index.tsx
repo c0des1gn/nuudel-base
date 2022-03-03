@@ -15,7 +15,7 @@ interface IChoicesProps {
   style?: any;
   context?: any;
   mode: Mode;
-  selected: string[];
+  selected: string[] | string;
   data: IChoicesData[];
   onSubmit?(data);
   disabled?: boolean;

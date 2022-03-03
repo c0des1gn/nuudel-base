@@ -227,20 +227,22 @@ class ImagePickerField extends React.Component<
             },
             {
               title: t('Cancel'),
-              containerStyle: { backgroundColor: COLORS.PRIMARY },
+              containerStyle: { backgroundColor: COLORS.DANGER },
               titleStyle: { color: '#fff' },
               onPress: () => this.setState({ showActionSheet: false }),
             },
           ]}
         />
-        <Button
-          containerStyle={styles.containerButton}
-          style={styles.button}
-          disabled={this.props.disabled === true}
-          onPress={this.onImagePicker}
-        >
-          {t('ImageButtonText')}
-        </Button>
+        {!this.props.disabled && (
+          <Button
+            containerStyle={styles.containerButton}
+            style={styles.button}
+            disabled={this.props.disabled === true}
+            onPress={this.onImagePicker}
+          >
+            {t('ImageButtonText')}
+          </Button>
+        )}
         {!!this.state.imgSource.uri ? (
           <TouchableOpacity style={{ flex: 1 }} onLongPress={this.pressRemove}>
             <Image

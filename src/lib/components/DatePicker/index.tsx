@@ -1,9 +1,9 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Platform, StyleSheet, Pressable, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import RnDatePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { dateToString } from 'nuudel-utils';
+import { dateToString, toDate } from 'nuudel-utils';
 import { COLORS, SIZES } from '../../theme';
 import { t } from 'nuudel-utils';
 
@@ -56,7 +56,7 @@ export const DatePicker: FC<IDatePickerProps> = ({
   ...props
 }) => {
   const [show, setShow] = useState(Platform.OS === 'ios');
-  const [value, setValue] = useState(props?.defaultDate || new Date());
+  const [value, setValue] = useState(toDate(props?.defaultDate));
   const [mode, setMode] = useState(
     (Platform.OS === 'ios' ? 'datetime' : 'date') as any
   );
@@ -66,6 +66,14 @@ export const DatePicker: FC<IDatePickerProps> = ({
       setShow(true);
     }
   };
+
+  /*
+  useEffect(() => {
+    if (value === new Date('1970-01-01T12:00:00')) {
+      setValue(props.defaultDate);
+    }
+  }, [props.defaultDate]); // */
+
   return (
     <>
       {show ? (

@@ -11,16 +11,21 @@ import { COLORS, SIZES } from '../../theme';
 interface ILookupProps {
   title?: string;
   style?: CSSProperties | any;
+  containerStyle?: CSSProperties | any;
+  iosStyle?: CSSProperties | any;
+  itemStyle?: CSSProperties | any;
   options: IPickerItem[];
   value?: any;
   onChange(value: any, index?: number);
   enabled?: boolean;
   prompt?: string;
+  noneText?: string;
 }
 
 interface IPickerItem {
   id: string | any;
   name: string;
+  icon?: any;
 }
 
 const height = 250;
@@ -31,38 +36,53 @@ const Dropdown = ({ ...props }) => {
       mode={Platform.OS === 'ios' ? 'dialog' : 'dropdown'}
       enabled={props?.enabled !== false}
       prompt={props?.prompt || t('SelectOne')}
-      itemStyle={{
-        fontSize: SIZES.H6,
-        color: COLORS.TEXT,
-        backgroundColor: COLORS.BACKGROUND_LIGHT,
-      }}
+      itemStyle={[
+        {
+          fontSize: SIZES.H6,
+          color: COLORS.TEXT,
+          backgroundColor: COLORS.BACKGROUND_LIGHT,
+        },
+        props.itemStyle,
+      ]}
       numberOfLines={1}
       dropdownIconRippleColor={COLORS.LOGIN}
       dropdownIconColor={COLORS.PRIMARY}
-      style={{
-        maxHeight: height,
-        color: COLORS.TEXT,
-        backgroundColor: COLORS.BACKGROUND_LIGHT,
-      }}
+      style={[
+        {
+          maxHeight: height,
+          color: COLORS.TEXT,
+          backgroundColor: COLORS.BACKGROUND_LIGHT,
+        },
+        props.style,
+      ]}
       selectedValue={selectedValue}
       onValueChange={(val) => {
+        if (!val) {
+          return;
+        }
         setSelectedValue(val);
         if (props.onChange) {
           props.onChange(val);
         }
       }}
     >
-      {!selectedValue && (
-        <Picker.Item key={-1} label={t('SelectOne')} value={''} />
+      {!selectedValue && !!props.noneText && (
+        <Picker.Item
+          key={-1}
+          label={props.noneText || t('SelectOne')}
+          value={''}
+        />
       )}
       {props.options.map((value, index: number) => (
-        <Picker.Item key={index} label={value.name} value={value.id} />
+        <Picker.Item key={index} label={value.name} value={value.id}>
+          {value?.icon}
+        </Picker.Item>
       ))}
     </Picker>
   );
 };
 
-export const Lookup: FC<ILookupProps> = ({ style, ...props }) => {
+export const Lookup: FC<ILookupProps> = ({ ...props }) => {
   const showOverlay = () => {
     Keyboard.dismiss();
     Navigation.showOverlay({
@@ -89,19 +109,22 @@ export const Lookup: FC<ILookupProps> = ({ style, ...props }) => {
   };
 
   return (
-    <View {...props} style={[{ margin: SIZES.PADDING_SMALL }, style]}>
+    <View style={[{ margin: SIZES.PADDING_SMALL }, props.containerStyle]}>
       {Platform.OS === 'ios' ? (
         <View
-          style={{
-            height: 35,
-            marginVertical: SIZES.PADDING,
-            paddingHorizontal: SIZES.PADDING_HALF,
-            alignSelf: 'stretch',
-            borderColor: COLORS.BORDER_LIGHT,
-            borderWidth: SIZES.BORDER_WIDTH,
-            backgroundColor: COLORS.BACKGROUND_GREY,
-            borderRadius: SIZES.BORDER_RADIUS,
-          }}
+          style={[
+            {
+              height: 35,
+              marginVertical: SIZES.PADDING,
+              paddingHorizontal: SIZES.PADDING_HALF,
+              alignSelf: 'stretch',
+              borderColor: COLORS.BORDER_LIGHT,
+              borderWidth: SIZES.BORDER_WIDTH,
+              backgroundColor: COLORS.BACKGROUND_GREY,
+              borderRadius: SIZES.BORDER_RADIUS,
+            },
+            props.iosStyle,
+          ]}
         >
           <Pressable
             onPress={showOverlay}
