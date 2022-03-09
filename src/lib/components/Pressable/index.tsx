@@ -46,7 +46,7 @@ const Pressable: React.FC<IPressableProps> = ({
       ) : typeof children === 'string' ? (
         <Text style={styleText}>{children}</Text>
       ) : (
-        { children }
+        children
       )}
     </PressAble>
   );

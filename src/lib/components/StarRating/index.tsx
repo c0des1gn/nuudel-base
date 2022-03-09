@@ -1,6 +1,6 @@
 // React and react native imports
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { COLORS, SIZES } from '../../theme/';
 //import { View as AnimatableView } from 'react-native-animatable';
 
@@ -25,6 +25,7 @@ export interface IStarRating {
   reversed: boolean;
   starSize: number;
   starStyle: any;
+  Ico: any;
   selectedStar(rate: number): void;
 }
 
@@ -44,7 +45,7 @@ class StarRating extends Component<IStarRating, any> {
     disabled: false,
     emptyStar: 'star-empty',
     emptyStarColor: COLORS.ICON_LIGHT,
-    fullStar: 'star-1',
+    fullStar: 'star',
     fullStarColor: COLORS.ICON,
     halfStar: 'star-half-alt',
     halfStarColor: undefined,
@@ -82,6 +83,7 @@ class StarRating extends Component<IStarRating, any> {
       reversed,
       starSize,
       starStyle,
+      Ico,
     } = this.props;
 
     const ContainerStyle = {
@@ -130,6 +132,15 @@ class StarRating extends Component<IStarRating, any> {
             starIconName={starIconName}
             starSize={starSize}
             starStyle={starStyle}
+            Ico={
+              !Ico ? undefined : (
+                <Ico
+                  name={starIconName}
+                  size={starSize}
+                  color={finalStarColor}
+                />
+              )
+            }
           />
         </View>
       );
@@ -143,7 +154,11 @@ class StarRating extends Component<IStarRating, any> {
         <View style={ContainerStyle} pointerEvents={disabled ? 'none' : 'auto'}>
           {starButtons}
         </View>
-        {children}
+        {typeof children === 'string' ? (
+          <Text>{children}</Text>
+        ) : React.isValidElement(children) ? (
+          children
+        ) : null}
       </View>
     );
   }

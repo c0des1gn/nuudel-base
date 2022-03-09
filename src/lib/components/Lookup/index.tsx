@@ -13,6 +13,7 @@ interface ILookupProps {
   style?: CSSProperties | any;
   containerStyle?: CSSProperties | any;
   iosStyle?: CSSProperties | any;
+  iosDropdownIcon?: any;
   itemStyle?: CSSProperties | any;
   options: IPickerItem[];
   value?: any;
@@ -23,13 +24,14 @@ interface ILookupProps {
 }
 
 interface IPickerItem {
-  id: string | any;
+  id: any;
   name: string;
   icon?: any;
 }
 
 const height = 250;
-const Dropdown = ({ ...props }) => {
+
+export const Dropdown: FC<ILookupProps> = ({ ...props }) => {
   const [selectedValue, setSelectedValue] = useState(props.value);
   return (
     <Picker
@@ -56,13 +58,13 @@ const Dropdown = ({ ...props }) => {
         props.style,
       ]}
       selectedValue={selectedValue}
-      onValueChange={(val) => {
-        if (!val) {
+      onValueChange={(itemValue: any, itemIndex: number) => {
+        if (null === itemValue || 'undefined' === typeof itemValue) {
           return;
         }
-        setSelectedValue(val);
+        setSelectedValue(itemValue);
         if (props.onChange) {
-          props.onChange(val);
+          props.onChange(itemValue);
         }
       }}
     >
@@ -73,7 +75,7 @@ const Dropdown = ({ ...props }) => {
           value={''}
         />
       )}
-      {props.options.map((value, index: number) => (
+      {props.options.map((value: IPickerItem, index: number) => (
         <Picker.Item key={index} label={value.name} value={value.id}>
           {value?.icon}
         </Picker.Item>
@@ -82,7 +84,11 @@ const Dropdown = ({ ...props }) => {
   );
 };
 
-export const Lookup: FC<ILookupProps> = ({ ...props }) => {
+export const Lookup: FC<ILookupProps> = ({
+  iosDropdownIcon,
+  iosStyle,
+  ...props
+}) => {
   const showOverlay = () => {
     Keyboard.dismiss();
     Navigation.showOverlay({
@@ -123,7 +129,7 @@ export const Lookup: FC<ILookupProps> = ({ ...props }) => {
               backgroundColor: COLORS.BACKGROUND_GREY,
               borderRadius: SIZES.BORDER_RADIUS,
             },
-            props.iosStyle,
+            iosStyle,
           ]}
         >
           <Pressable
@@ -143,14 +149,19 @@ export const Lookup: FC<ILookupProps> = ({ ...props }) => {
               }}
             >
               {props.options.filter((o) => o.id === props.value)[0]?.name ||
+                props?.prompt ||
                 t('SelectOne')}
             </Text>
-            <Icon
-              onPress={showOverlay}
-              name={'arrow-down'}
-              size={SIZES.BIG}
-              color={COLORS.PRIMARY}
-            />
+            {!iosDropdownIcon ? (
+              <Icon
+                onPress={showOverlay}
+                name={'arrow-down'}
+                size={SIZES.BIG}
+                color={COLORS.PRIMARY}
+              />
+            ) : (
+              iosDropdownIcon
+            )}
           </Pressable>
         </View>
       ) : (
