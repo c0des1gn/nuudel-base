@@ -2,12 +2,12 @@ import { Alert, Linking, Platform } from 'react-native';
 import { fromPromise } from '@apollo/client';
 import { store } from '../hocs/withRedux';
 import { sign_out } from '../redux/actions/user';
-import { USER_TOKEN, USER_ID } from 'nuudel-utils';
+import { USER_TOKEN, USER_ID, getMinLeft } from 'nuudel-utils';
 import { ApolloError } from '@apollo/client';
 import { goToAuthScreen } from '../nav';
 import gql from 'graphql-tag';
 import UI from '../common/UI';
-import { t } from 'nuudel-utils';
+import { t } from '../loc/i18n';
 
 var debounce: any = null;
 const signOut = async (client?: any) => {
@@ -183,3 +183,92 @@ export const dialCall = (phone: string) => {
   }
   return _debounce;
 };
+
+export const getTimeLeft = (expired: any): string => {
+  const min: number = getMinLeft(expired);
+  if (min <= 0) {
+    return t('item ends');
+  } else {
+    if (min >= 1440) {
+      return t('dayhour', {
+        days: Math.floor(min / 1440),
+        hours: Math.floor((min % 1440) / 60),
+      });
+    } else {
+      return t('hourmin', {
+        hours: Math.floor(min / 60),
+        min: Math.floor(min % 60),
+      });
+    }
+  }
+};
+
+export function getCondition(condition) {
+  switch (condition ? condition.toLowerCase() : '') {
+    case 'new':
+    case 'sealed':
+    case 'brand new':
+    case 'new with box':
+    case 'new with tags':
+      condition = t('New');
+      break;
+    case 'used':
+    case 'pre-owned':
+    case 'certified pre-owned':
+      condition = t('Used');
+      break;
+    case 'openbox':
+    case 'open box':
+      condition = t('OpenBox');
+      break;
+    case 'refurbished':
+    case 'renewed':
+      condition = t('Refurbished');
+      break;
+    case 'parts':
+      condition = t('Parts');
+      break;
+    case 'any':
+      condition = t('Any');
+      break;
+    case 'collectible':
+      condition = t('Collectible');
+      break;
+    case 'new other (see details)':
+    case 'new without tags':
+    case 'new without box':
+      condition = t('NewOther');
+      break;
+    case 'new with defects':
+      condition = t('NewWithDefects');
+      break;
+    case 'manufacturer refurbished':
+      condition = t('ManufacturerRefurbished');
+      break;
+    case 'seller refurbished':
+    case 'remanufactured':
+    case 'retread':
+    case 'certified refurbished':
+      condition = t('SellerRefurbished');
+      break;
+    case 'like new':
+      condition = t('LikeNew');
+      break;
+    case 'very good':
+      condition = t('VeryGood');
+      break;
+    case 'good':
+      condition = t('Good');
+      break;
+    case 'acceptable':
+      condition = t('Acceptable');
+      break;
+    case 'for parts or not working':
+    case 'damaged':
+      condition = t('Parts');
+      break;
+    default:
+      break;
+  }
+  return condition;
+}

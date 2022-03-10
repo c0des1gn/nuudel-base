@@ -8,7 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import RNFormField, {
   IRNFormFieldProps,
 } from '../../controls/formFields/RNFormField';
-import { I8, t } from 'nuudel-utils';
+import { I8, t } from '../../loc/i18n';
 import {
   setFields,
   changeProp,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { IRNFormFieldProps } from './RNFormField';
 import { Upload } from '../../components';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';
 import { connect } from 'react-redux';

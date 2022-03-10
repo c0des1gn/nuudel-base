@@ -1,5 +1,5 @@
 import { DisplayType } from 'nuudel-utils';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 
 const unionBy = (a, b) => {
   b.forEach((item) => {

@@ -5,7 +5,7 @@ import RnDatePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { dateToString, toDate } from 'nuudel-utils';
 import { COLORS, SIZES } from '../../theme';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 
 const styles = StyleSheet.create({
   date: {

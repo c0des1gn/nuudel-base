@@ -1,7 +1,7 @@
 import React from 'react';
 import { styles } from './styled';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import {
   Text,
   View,

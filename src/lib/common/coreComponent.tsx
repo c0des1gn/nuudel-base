@@ -9,7 +9,7 @@ import { changeProp } from '../redux/actions/fields';
 import { Linking } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ControlMode, DisplayType } from 'nuudel-utils';
-import { t } from 'nuudel-utils';
+import { t } from '../loc/i18n';
 import { EDITFORM_SCREEN } from '../system_screens';
 import { NavigationPush } from '../nav';
 

@@ -3,7 +3,7 @@ import { COLORS, SIZES } from '../../theme';
 import { IRNFormFieldProps } from './RNFormField';
 import { Switch } from 'react-native-elements';
 import { View } from 'react-native';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import { ControlMode } from 'nuudel-utils';
 import { mapDispatchToProps, mapStateToProps, storeProps } from './RNFieldCore';
 import { getValue, changeProp } from '../../redux/actions/fields';

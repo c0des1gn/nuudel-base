@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import MultiSelectField from './MultiSelectField';
 import { COLORS, SIZES } from '../../theme';
 import { styles } from './styled';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 
 const RNFieldChoiceEdit: React.FunctionComponent<IRNFormFieldProps> = (
   props

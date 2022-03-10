@@ -3,7 +3,7 @@ import { View, SafeAreaView } from 'react-native';
 import MultiSelect, { MultiSelectProps } from 'react-native-multiple-select';
 import { styles } from './styled';
 import { COLORS, SIZES } from '../../theme';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 
 //extends MultiSelectProps
 export interface IMultiSelectProps {

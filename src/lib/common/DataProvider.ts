@@ -8,7 +8,7 @@ import gql from 'graphql-tag';
 import { IListFormService } from '../services/IListFormService';
 import { getPlural } from 'nuudel-utils';
 import { clientError } from '../common/helper';
-import { t } from 'nuudel-utils';
+import { t } from '../loc/i18n';
 
 export default class DataProvider implements IDataProvider {
   private _lfs: IListFormService;

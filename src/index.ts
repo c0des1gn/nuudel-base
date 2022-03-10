@@ -27,6 +27,15 @@ import {
 
 import { createClient, _dataProvider, lfs } from './lib/hocs/withApollo';
 
+// translate
+export {
+  //  I8,
+  //  t,
+  //  changeLanguage,
+  //  defaultLocale,
+  setTranslate,
+} from './lib/loc/i18n';
+
 // Core
 export * from './lib/hocs';
 

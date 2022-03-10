@@ -55,6 +55,7 @@
     "paths": {
       "nuudel-base": ["src/index"],
       "@Components": ["src/lib/components"],
+      "@Translate": ["src/loc/i18n"],
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

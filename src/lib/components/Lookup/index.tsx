@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { Navigation } from 'react-native-navigation';
 import { styles } from '../../theme/styles';
 import { Picker } from '@react-native-picker/picker';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import { OVERLAY_SCREEN } from '../../system_screens';
 import { COLORS, SIZES } from '../../theme';
 

@@ -3,7 +3,7 @@ import { IRNFormFieldProps } from './RNFormField';
 import { Image, View, Dimensions } from 'react-native';
 import { Text } from '../../components';
 import { styles } from './styled';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 
 const { width } = Dimensions.get('window');
 

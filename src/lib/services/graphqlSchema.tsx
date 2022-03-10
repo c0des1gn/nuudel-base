@@ -8,7 +8,8 @@ import {
 import { UI } from '../common/UI';
 import { Alert } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import { t, HttpClient, USER_KEY, USER_TOKEN } from 'nuudel-utils';
+import { HttpClient, USER_KEY, USER_TOKEN } from 'nuudel-utils';
+import { t } from '../loc/i18n';
 
 var alertPresent: boolean = false;
 var debounce: any = undefined;

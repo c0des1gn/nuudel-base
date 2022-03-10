@@ -5,7 +5,7 @@ import { Toast } from '../Toast';
 import Text from '../Text';
 import ActionSheet from '../ActionSheet';
 import { Image, View, TouchableOpacity } from 'react-native';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import { ControlMode, HOST, HttpClient } from 'nuudel-utils';
 import UI from '../../common/UI';
 import { styles } from '../../theme/styles';

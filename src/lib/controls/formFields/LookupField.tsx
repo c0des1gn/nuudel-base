@@ -4,7 +4,7 @@ import { Lookup } from '../../components';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import MultiSelectField from './MultiSelectField';
 import { ControlMode } from 'nuudel-utils';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import { IRNFormFieldProps } from './RNFormField';
 import { ListFormService } from '../../services/ListFormService';
 

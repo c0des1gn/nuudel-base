@@ -6,7 +6,7 @@ import { breadthFirstRecursion } from './menutransform';
 import EmptyList from './Empty';
 import { styles } from './styled';
 import { COLORS, SIZES } from '../../theme';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 
 interface ITreeSelectProps {
   isShowTreeId: boolean;

@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { ControlMode, DisplayType } from 'nuudel-utils';
 import { IFieldSchema } from '../../services/datatypes/RenderListData';
-import { t } from 'nuudel-utils';
+import { t } from '../../loc/i18n';
 import FormField, { IFormFieldProps } from './FormField';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { Label, Text, Input } from '../../components';
