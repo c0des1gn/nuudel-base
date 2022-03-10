@@ -1,11 +1,16 @@
-import { PixelRatio, Dimensions } from 'react-native';
+import { PixelRatio, Dimensions, Platform } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
 const BASE = 12;
 
 export let SIZES: any = {
-  FONTFAMILY: 'Open Sans', //Roboto
+  FONTFAMILY:
+    Platform.OS === 'ios' || Platform.OS === 'macos'
+      ? 'Helvetica'
+      : Platform.OS === 'android'
+      ? 'Roboto'
+      : 'Arial', //'Open Sans'
   //BASE: BASE,
   FONT: BASE,
   OPACITY: 0.6,
