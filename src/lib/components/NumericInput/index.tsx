@@ -36,9 +36,9 @@ export interface INumericInputProps {
   arrows: boolean;
   showBorder: boolean;
   fontSize: number;
-  fontFamily: string;
+  fontFamily?: string;
   buttonFontSize: number;
-  buttonFontFamily: string;
+  buttonFontFamily?: string;
   buttonTextColor: string;
   buttonPressTextColor: string;
   disabled: boolean;
@@ -125,9 +125,9 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
     arrows: false,
     showBorder: true,
     fontSize: SIZES.H6,
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
     buttonfontSize: SIZES.H3,
-    buttonFontFamily: SIZES.FONTFAMILY,
+    //buttonFontFamily: SIZES.FONTFAMILY,
     buttonTextColor: defaultColor,
     buttonPressTextColor: COLORS.BACKGROUND,
     disabled: false,
@@ -548,9 +548,11 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
       {
         color: this.props.textColor,
         fontSize: this.props.fontSize,
-        fontFamily: this.props.fontFamily,
         backgroundColor: this.props.background,
         height: this.props.height,
+      },
+      !!this.props.fontFamily && {
+        fontFamily: this.props.fontFamily,
       },
       this.props.inputStyle,
     ];
@@ -597,6 +599,8 @@ class NumericInput extends Component<INumericInputProps, INumericInputStates> {
       {
         lineHeight: lineHeight,
         fontSize: this.props.buttonFontSize,
+      },
+      !!this.props.buttonFontFamily && {
         fontFamily: this.props.buttonFontFamily,
       },
     ];

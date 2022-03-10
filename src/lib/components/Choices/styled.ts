@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   BodyRight: { flexDirection: 'column', alignItems: 'flex-end' },
   text: {
     fontSize: SIZES.BIG,
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
     color: COLORS.TEXT_DARK,
   },
   checkBox: {

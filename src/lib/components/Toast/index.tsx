@@ -207,7 +207,7 @@ export class Toast extends Component<IToastProps, IToastState> {
                   textAlign: 'center',
                   flexWrap: 'wrap',
                   color: COLORS.BACKGROUND,
-                  fontFamily: SIZES.FONTFAMILY,
+                  //fontFamily: SIZES.FONTFAMILY,
                   fontSize: SIZES.H6,
                 },
                 this.props.textStyle,

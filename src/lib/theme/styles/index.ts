@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   Button: {
     borderRadius: SIZES.BUTTON_BORDER_RADIUS,
     //backgroundColor: COLORS.BUTTON,
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
     overflow: 'hidden',
   },
   ButtonText: {
@@ -25,16 +25,16 @@ const styles = StyleSheet.create({
     marginLeft: 0,
   },
   Text: {
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
     fontSize: SIZES.FONT,
   },
   H1: {
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
     fontSize: SIZES.H1,
     marginBottom: 15,
   },
   Label: {
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
   },
   Container: {
     flex: 1,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   Input: {
-    fontFamily: SIZES.FONTFAMILY,
+    //fontFamily: SIZES.FONTFAMILY,
   },
   loading: {
     alignItems: 'center',
@@ -71,7 +71,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.BORDER,
   },
   Slider: { width: '100%', height: 21 },
-  font: { fontFamily: SIZES.FONTFAMILY, fontSize: SIZES.FONT },
+  font: {
+    //fontFamily: SIZES.FONTFAMILY,
+    fontSize: SIZES.FONT,
+  },
   text: { fontSize: SIZES.H6, padding: 0, height: 36, color: COLORS.TEXT },
   button: {
     minWidth: 150,
