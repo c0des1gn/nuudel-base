@@ -1,7 +1,4 @@
 import I8 from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import { USER_LANG } from 'nuudel-utils';
-import memoize from 'lodash.memoize';
 import en from './en-US.json';
 import mn from './mn-MN.json';
 
@@ -12,33 +9,15 @@ const translationGetters = {
 };
 const defaultLocale = 'mn-MN';
 
-const translate = memoize(
-  (key, config) => I8.t(key, config),
-  (key, config) => (config ? key + JSON.stringify(config) : key)
-);
-
-const changeLanguage = (
-  languageTag: string = defaultLocale,
-  refresh: boolean = true,
-  cb?: Function
-) => {
-  // clear translation cache
-  translate.cache.clear();
-  //UI.setItem(USER_LANG, languageTag);
-  if (cb) {
-    cb(USER_LANG, languageTag);
-  }
-
-  I8.changeLanguage(languageTag).then((t) => {
-    if (refresh) {
-    }
-  });
+const changeLanguage = (languageTag: string = defaultLocale) => {
+  return I8.changeLanguage(languageTag);
 };
 
 if (!I8.isInitialized) {
-  I8.use(initReactI18next).init({
+  I8.init({
+    compatibilityJSON: 'v3',
     lng: defaultLocale,
-    //debug: true,
+    debug: __DEV__,
     keySeparator: '.',
     fallbackLng: 'mn-MN',
     ns: ['translations'],
@@ -57,20 +36,13 @@ if (!I8.isInitialized) {
       return !key || typeof key !== 'string' ? '' : key.split('.').pop() + '';
     },
     //react: { wait: true },
+  }).then(() => {
+    I8.isInitialized = false;
   });
 }
 
-const setTranslate = (translate: Function) => {
-  reTranslate = translate;
-};
-
-let reTranslate: Function = undefined;
 const t = (key: string, options?: any): string => {
-  if (reTranslate && typeof reTranslate === 'function') {
-    return reTranslate(key, options);
-  }
-  return translate(key, options);
+  return I8.t(key, options);
 };
 
-export { I8, t, setTranslate, defaultLocale, changeLanguage };
-//export default I8;
+export { I8, t, changeLanguage };
