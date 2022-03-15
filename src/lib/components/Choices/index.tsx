@@ -17,7 +17,8 @@ interface IChoicesProps {
   mode: Mode;
   selected: string[] | string;
   data: IChoicesData[];
-  onSubmit?(data);
+  onSubmit?(data: any);
+  onChange?(selected: string[]);
   disabled?: boolean;
 }
 
@@ -77,6 +78,9 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
       selected.push(value);
     }
     this.setState({ selected: selected });
+    if (this.props.onChange) {
+      this.props.onChange(selected);
+    }
   };
 
   render() {
