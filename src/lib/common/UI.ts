@@ -108,7 +108,7 @@ export const getURL = (): string => {
 
 export class UI {
   public static ComponentId = (): Promise<string | null> => {
-    return AsyncStorage.getItem('componentId');
+    return UI.getItem('componentId');
   };
 
   public static setComponentId = async (
@@ -117,32 +117,47 @@ export class UI {
   ) => {
     const srcComponentId = await UI.ComponentId();
     if (srcComponentId) {
-      AsyncStorage.setItem('srcComponentId', !back ? srcComponentId : null);
-      AsyncStorage.setItem('dstComponentId', componentId);
+      if (!back) {
+        const dstComponentId = await UI.srcComponentId();
+        UI.setItem('srcComponentId', srcComponentId);
+        if (dstComponentId) {
+          UI.setItem('dstComponentId', dstComponentId);
+        } else {
+          UI.removeItem('dstComponentId');
+        }
+      } else {
+        const dstComponentId = await UI.dstComponentId();
+        if (dstComponentId) {
+          UI.setItem('srcComponentId', dstComponentId);
+        } else {
+          UI.removeItem('srcComponentId');
+        }
+        UI.removeItem('dstComponentId');
+      }
     }
-    AsyncStorage.setItem('componentId', componentId);
+    UI.setItem('componentId', componentId);
   };
 
   public static setRootComponentId = async (componentId: any) => {
     //if ( ['Home', 'List', 'Notification', 'MyAccount', 'Universal', 'Camera'].includes( componentId ) ) {
-    AsyncStorage.setItem('rootComponentId', componentId);
+    UI.setItem('rootComponentId', componentId);
     //}
   };
 
   public static rootComponentId = (): Promise<string | null> => {
-    return AsyncStorage.getItem('rootComponentId');
+    return UI.getItem('rootComponentId');
   };
 
   public static srcComponentId = (): Promise<string | null> => {
-    return AsyncStorage.getItem('srcComponentId');
+    return UI.getItem('srcComponentId');
   };
 
   public static dstComponentId = (): Promise<string | null> => {
-    return AsyncStorage.getItem('dstComponentId');
+    return UI.getItem('dstComponentId');
   };
 
   public static IsConnected = async (): Promise<boolean> => {
-    return 'true' === (await AsyncStorage.getItem('isConnected'));
+    return 'true' === (await UI.getItem('isConnected'));
   };
 
   public static setConnected = (state: boolean | NetInfoState) => {
@@ -157,7 +172,7 @@ export class UI {
             : false
           : state.isInternetReachable;
     }
-    AsyncStorage.setItem('isConnected', !connected ? 'false' : 'true');
+    UI.setItem('isConnected', !connected ? 'false' : 'true');
   };
 
   public static getItem = (
@@ -172,6 +187,9 @@ export class UI {
     value: string,
     callback?: (error?: Error) => void
   ): Promise<void> => {
+    if (!value) {
+      AsyncStorage.removeItem(key, callback);
+    }
     return AsyncStorage.setItem(key, value, callback);
   };
 
