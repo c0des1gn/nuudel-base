@@ -111,10 +111,13 @@ export class UI {
     return AsyncStorage.getItem('componentId');
   };
 
-  public static setComponentId = async (componentId: any) => {
+  public static setComponentId = async (
+    componentId: any,
+    back: boolean = false
+  ) => {
     const srcComponentId = await UI.ComponentId();
     if (srcComponentId) {
-      AsyncStorage.setItem('srcComponentId', srcComponentId);
+      AsyncStorage.setItem('srcComponentId', !back ? srcComponentId : null);
       AsyncStorage.setItem('dstComponentId', componentId);
     }
     AsyncStorage.setItem('componentId', componentId);

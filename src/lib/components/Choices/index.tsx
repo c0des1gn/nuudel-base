@@ -104,13 +104,12 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
                 checkedColor={COLORS.PRIMARY}
                 style={styles.checkBox}
                 checked={selected.indexOf(item.value) >= 0}
+                title={item.label}
+                textStyle={styles.text}
                 onPress={() => {
                   this.onSelect(item.value);
                 }}
               />
-              <View style={styles.body}>
-                <Text style={styles.text}>{item.label}</Text>
-              </View>
             </Item>
           ))
         ) : !!data && this.props.mode === 'pick' ? (

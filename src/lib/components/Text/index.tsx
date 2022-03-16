@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Text as BaseText, TextProps } from 'react-native-elements';
 import { styles } from '../../theme/styles';
 import { StyleSheet } from 'react-native';
 
-export const Text: FunctionComponent<TextProps> = ({ children, ...props }) => {
+export const Text: FC<TextProps> = ({ children, ...props }) => {
   return (
     <BaseText {...props} style={StyleSheet.flatten([styles.Text, props.style])}>
       {children}
@@ -11,7 +11,7 @@ export const Text: FunctionComponent<TextProps> = ({ children, ...props }) => {
   );
 };
 
-export const H1: FunctionComponent<TextProps> = ({ children, ...props }) => {
+export const H1: FC<TextProps> = ({ children, ...props }) => {
   return (
     <Text {...props} style={StyleSheet.flatten([styles.H1, props.style])}>
       {children}
@@ -19,7 +19,7 @@ export const H1: FunctionComponent<TextProps> = ({ children, ...props }) => {
   );
 };
 
-export const Label: FunctionComponent<TextProps> = ({ children, ...props }) => {
+export const Label: FC<TextProps> = ({ children, ...props }) => {
   return (
     <Text {...props} style={StyleSheet.flatten([styles.Label, props.style])}>
       {children}
