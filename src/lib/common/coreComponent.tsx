@@ -47,14 +47,16 @@ export abstract class coreComponent<
   // Заавал харагдах, гэхдээ бөглөхгүй байж болох талбар        ------------------- 3
   // Тухайн формын хувьд харагдахгүй байх талбар                ------------------- 4
   protected defaultFields: IDisplayType[] = [];
-  protected _store: Store<IRootState>;
+  protected _store: Store<IRootState> = undefined;
   private _props: any = null;
   protected _saveButtonClicked = false;
   protected _mounted: boolean = false;
   public constructor(props: P, state?: any) {
     super(props, state);
     this._props = { ...props };
-    this._store = createStore();
+    if (this._props?.hasStore === true) {
+      this._store = createStore();
+    }
   }
 
   componentDidMount() {

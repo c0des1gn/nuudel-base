@@ -120,18 +120,9 @@ export class UI {
       if (!back) {
         const dstComponentId = await UI.srcComponentId();
         UI.setItem('srcComponentId', srcComponentId);
-        if (dstComponentId) {
-          UI.setItem('dstComponentId', dstComponentId);
-        } else {
-          UI.removeItem('dstComponentId');
-        }
+        UI.setItem('dstComponentId', dstComponentId);
       } else {
-        const dstComponentId = await UI.dstComponentId();
-        if (dstComponentId) {
-          UI.setItem('srcComponentId', dstComponentId);
-        } else {
-          UI.removeItem('srcComponentId');
-        }
+        UI.setItem('srcComponentId', await UI.dstComponentId());
         UI.removeItem('dstComponentId');
       }
     }
@@ -184,11 +175,11 @@ export class UI {
 
   public static setItem = (
     key: string,
-    value: string,
+    value: string | null,
     callback?: (error?: Error) => void
   ): Promise<void> => {
     if (!value) {
-      AsyncStorage.removeItem(key, callback);
+      return AsyncStorage.removeItem(key, callback);
     }
     return AsyncStorage.setItem(key, value, callback);
   };

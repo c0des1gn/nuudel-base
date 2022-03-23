@@ -12,7 +12,7 @@ export const sign_in = (obj, dispatch?) =>
         obj,
       },
     },
-    dispatch,
+    dispatch
   );
 
 export const sign_out = (dispatch?) =>
@@ -21,10 +21,10 @@ export const sign_out = (dispatch?) =>
       type: CONST.SIGNOUT,
       payload: {},
     },
-    dispatch,
+    dispatch
   );
 
-export const updateProp = (prop, value, dispatch?) =>
+export const updateProp = (prop: string, value, dispatch?) =>
   dispatcher(
     {
       type: CONST.UPDATE_PROP,
@@ -33,5 +33,14 @@ export const updateProp = (prop, value, dispatch?) =>
         value,
       },
     },
-    dispatch,
+    dispatch
+  );
+
+export const updateProps = (obj, dispatch?) =>
+  dispatcher(
+    {
+      type: CONST.UPDATE_PROPS,
+      payload: obj,
+    },
+    dispatch
   );

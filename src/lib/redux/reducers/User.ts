@@ -42,6 +42,11 @@ export default (state = initialState, action: IRootAction) => {
         ...state,
         ...{ [action.payload.prop]: action.payload.value },
       };
+    case CONST.UPDATE_PROPS:
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

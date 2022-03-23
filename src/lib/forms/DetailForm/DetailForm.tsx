@@ -69,6 +69,7 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
 
   static defaultProps = {
     permission: Permission.Remove,
+    hasStore: true,
   };
 
   //@override
