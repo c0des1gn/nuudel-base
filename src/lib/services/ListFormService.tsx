@@ -389,7 +389,8 @@ export class ListFormService implements IListFormService {
   public static getDataAll(
     listname: string,
     columns: string[],
-    client
+    client: any,
+    options: any = {}
   ): Promise<any> {
     if (!listname || columns.length === 0) {
       return Promise.resolve({}); // no data, so returns empty
@@ -411,6 +412,8 @@ export class ListFormService implements IListFormService {
             ${query}
           `,
           variables: {},
+          fetchPolicy: 'no-cache',
+          ...options,
         });
       } catch (error) {
         return reject(error);
@@ -626,7 +629,8 @@ export class ListFormService implements IListFormService {
   public async itemById(
     listname: string,
     itemId: number | string,
-    fieldsSchema: IFieldSchema[] = []
+    fieldsSchema: IFieldSchema[] = [],
+    options: any = {}
   ): Promise<any> {
     if (!listname || !itemId || itemId === '') {
       return Promise.resolve({}); // no data, so returns empty
@@ -639,7 +643,7 @@ export class ListFormService implements IListFormService {
       );
     }
     let query = this.byIdQuery(listname, itemId, fieldsSchema);
-    return this.executeQuery(query, listname, QueryType.byId);
+    return this.executeQuery(query, listname, QueryType.byId, {}, options);
   }
 
   /**
@@ -1053,7 +1057,8 @@ export class ListFormService implements IListFormService {
     query: string,
     listname: string,
     type: QueryType | string,
-    variables: any = {}
+    variables: any = {},
+    options: any = {}
   ): Promise<any> {
     if ((!listname && type !== QueryType.Many) || !query) {
       return Promise.resolve(type === QueryType.View ? [] : {}); // no data, so returns empty
@@ -1097,6 +1102,8 @@ export class ListFormService implements IListFormService {
               ${query}
             `,
             variables: variables,
+            fetchPolicy: 'no-cache',
+            ...options,
           });
         } else {
           //<MutationResult, MutationVariables>
@@ -1107,6 +1114,8 @@ export class ListFormService implements IListFormService {
             variables: {
               data: variables,
             },
+            fetchPolicy: 'no-cache',
+            ...options,
           });
         }
       } catch (error: any) {

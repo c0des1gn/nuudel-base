@@ -7,6 +7,7 @@ export interface IListBaseState {
   pageSize: number;
   currentPage: number;
   listname?: string;
+  fetchPolicy?: string;
 }
 
 export interface IProviderCore {

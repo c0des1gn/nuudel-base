@@ -18,7 +18,9 @@ export const initStore = async (lfs, user: any = undefined) => {
       let usr: any = state.user || initialState;
       if (userId) {
         if (!user) {
-          user = await lfs.itemById('User', userId);
+          user = await lfs.itemById('User', userId, {
+            fetchPolicy: 'cache-first',
+          });
         }
         usr = {
           ...usr,

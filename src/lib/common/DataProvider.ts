@@ -9,13 +9,14 @@ import { IListFormService } from '../services/IListFormService';
 import { getPlural } from 'nuudel-utils';
 import { clientError } from '../common/helper';
 import { t } from '../loc/i18n';
+import { FetchPolicy } from '@apollo/client';
 
 export default class DataProvider implements IDataProvider {
   private _lfs: IListFormService;
   private _query: string = '';
   private _listname: string = 'Product';
   private _category: any = [];
-
+  private readonly _fetchPolicy: FetchPolicy = 'no-cache'; //'network-only',
   private readonly columns: string = `
   _id,
   title,
@@ -148,7 +149,7 @@ export default class DataProvider implements IDataProvider {
         }
       }`,
         variables: { _id: ID },
-        fetchPolicy: 'network-only',
+        fetchPolicy: this._fetchPolicy,
       });
     } catch (e) {
       this.onError(e);
@@ -185,7 +186,7 @@ export default class DataProvider implements IDataProvider {
         variables: {
           filter: `{"_id": {"$in": ["${Ids.join('","')}"]} }`,
         },
-        fetchPolicy: 'network-only',
+        fetchPolicy: this._fetchPolicy,
       });
     } catch (e) {
       this.onError(e);
@@ -216,7 +217,7 @@ export default class DataProvider implements IDataProvider {
           id: !ID ? null : ID,
           depth: depth,
         },
-        fetchPolicy: 'network-only',
+        fetchPolicy: this._fetchPolicy,
       });
     } catch (e) {
       this.onError(e);
@@ -254,7 +255,7 @@ export default class DataProvider implements IDataProvider {
         variables: {
           _id: ID,
         },
-        fetchPolicy: 'network-only',
+        fetchPolicy: this._fetchPolicy,
       });
     } catch (e) {
       this.onError(e);
@@ -278,6 +279,7 @@ export default class DataProvider implements IDataProvider {
       total,
       search,
       listname = this._listname,
+      fetchPolicy = this._fetchPolicy,
     } = state;
     let filter =
       typeof state.filter === 'object' ? { ...state.filter } : state.filter;
@@ -337,7 +339,7 @@ export default class DataProvider implements IDataProvider {
           skip: pageSize * (currentPage > 0 ? currentPage - 1 : 0),
           take: pageSize,
         },
-        fetchPolicy: 'network-only',
+        fetchPolicy: fetchPolicy as FetchPolicy,
         //errorPolicy: 'all',
       });
     } catch (err) {

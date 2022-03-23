@@ -10,7 +10,8 @@ export interface IListFormService {
   itemById: (
     listname: string,
     itemId: number | string,
-    fieldsSchema?: IFieldSchema[]
+    fieldsSchema?: IFieldSchema[],
+    options?: any
   ) => Promise<any>;
   createItem: (
     listname: string,

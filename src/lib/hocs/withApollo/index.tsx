@@ -2,8 +2,8 @@ import React, { ComponentType } from 'react';
 import {
   ApolloClient,
   DefaultOptions,
-  HttpLink,
   InMemoryCache,
+  HttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -14,11 +14,11 @@ import { IListFormService } from '../../services/IListFormService';
 import DataProvider from '../../common/DataProvider';
 import IDataProvider from '../../common/IDataProvider';
 import { Appearance } from 'react-native';
-//import {onErrors} from '../../common/helper';
 import { ThemeProvider } from 'react-native-elements';
-import { theme } from '../../theme';
 import { GetSchema, URI } from '../../services/graphqlSchema';
 import { setHost, URL } from 'nuudel-utils';
+//import { theme } from '../../theme';
+//import {onErrors} from '../../common/helper';
 
 const cache = new InMemoryCache({
   addTypename: false,
