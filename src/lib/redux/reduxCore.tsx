@@ -11,7 +11,7 @@ export const mapDispatchToProps: any = (dispatch) => ({
   updateProp: (prop: string, value) => {
     updateProp(prop, value, dispatch);
   },
-  updateProps: (obj) => {
+  updateProps: (obj: any) => {
     updateProps(obj, dispatch);
   },
   sign_in: (obj) => {

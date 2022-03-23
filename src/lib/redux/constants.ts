@@ -10,7 +10,7 @@ export const CHANGE_PROP = 'CHANGE_PROP';
 export const SIGNOUT = 'SIGNOUT';
 export const SIGNIN = 'SIGNIN';
 export const UPDATE_PROP = 'UPDATE_PROP';
-export const UPDATE_PROPS = 'UPDATE_PROPS';
+export const MERGE_PROPS = 'MERGE_PROPS';
 
 /* cart */
 export const ACTION_ADD_CART_ITEM = 'cart.ACTION_ADD_CART_ITEM';

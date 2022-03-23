@@ -42,7 +42,7 @@ export default (state = initialState, action: IRootAction) => {
         ...state,
         ...{ [action.payload.prop]: action.payload.value },
       };
-    case CONST.UPDATE_PROPS:
+    case CONST.MERGE_PROPS:
       return {
         ...state,
         ...action.payload,

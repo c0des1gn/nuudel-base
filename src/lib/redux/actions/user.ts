@@ -39,7 +39,7 @@ export const updateProp = (prop: string, value, dispatch?) =>
 export const updateProps = (obj, dispatch?) =>
   dispatcher(
     {
-      type: CONST.UPDATE_PROPS,
+      type: CONST.MERGE_PROPS,
       payload: obj,
     },
     dispatch
