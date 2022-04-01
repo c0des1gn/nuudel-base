@@ -18,6 +18,7 @@ export interface IImagePickerProps {
   placeholder?: string;
   valueChanged(value: any);
   styleImage?: any;
+  host: string;
 }
 
 export interface IImagePickerState {
@@ -40,6 +41,10 @@ class ImagePickerField extends React.Component<
       showActionSheet: false,
     };
   }
+
+  static defaultProps = {
+    host: HOST,
+  };
 
   componentWillUnmount() {
     ImagePicker.clean()
@@ -98,8 +103,9 @@ class ImagePickerField extends React.Component<
       //Please change file upload URL
       let res: any = undefined;
 
+      //console.log('HOST==========', HOST, this.props.host);
       try {
-        res = await HttpClient(`${HOST}/upload`, {
+        res = await HttpClient(`${this.props.host}/upload`, {
           method: 'post',
           body: data,
           headers: {
@@ -163,7 +169,7 @@ class ImagePickerField extends React.Component<
       const data = new FormData();
       data.append('delete', this.props.value.uri);
       try {
-        let res = await HttpClient(`${HOST}/remove`, {
+        let res = await HttpClient(`${this.props.host}/remove`, {
           method: 'post',
           body: data,
           headers: {
