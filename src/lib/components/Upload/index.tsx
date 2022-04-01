@@ -7,7 +7,7 @@ import ActionSheet from '../ActionSheet';
 import { Image, View, TouchableOpacity } from 'react-native';
 import { t } from '../../loc/i18n';
 import { ControlMode, HOST, HttpClient } from 'nuudel-utils';
-import UI from '../../common/UI';
+import { UI } from '../../common/UI';
 import { styles } from '../../theme/styles';
 import { COLORS, SIZES } from '../../theme';
 
@@ -18,7 +18,7 @@ export interface IImagePickerProps {
   placeholder?: string;
   valueChanged(value: any);
   styleImage?: any;
-  host: string;
+  host?: string;
 }
 
 export interface IImagePickerState {
@@ -103,9 +103,8 @@ class ImagePickerField extends React.Component<
       //Please change file upload URL
       let res: any = undefined;
 
-      //console.log('HOST==========', HOST, this.props.host);
       try {
-        res = await HttpClient(`${this.props.host}/upload`, {
+        res = await HttpClient(`${this.props.host || HOST}/upload`, {
           method: 'post',
           body: data,
           headers: {
@@ -169,7 +168,7 @@ class ImagePickerField extends React.Component<
       const data = new FormData();
       data.append('delete', this.props.value.uri);
       try {
-        let res = await HttpClient(`${this.props.host}/remove`, {
+        let res = await HttpClient(`${this.props.host || HOST}/remove`, {
           method: 'post',
           body: data,
           headers: {
