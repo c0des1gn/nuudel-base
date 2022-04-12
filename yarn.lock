@@ -3220,10 +3220,10 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-crypto-js@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
-  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+crypto-js@3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
+  integrity sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
 
 crypto-random-string@^2.0.0:
   version "2.0.0"
@@ -6495,13 +6495,13 @@ nullthrows@^1.1.1:
   resolved "https://registry.yarnpkg.com/nullthrows/-/nullthrows-1.1.1.tgz#7818258843856ae971eae4208ad7d7eb19a431b1"
   integrity sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==
 
-nuudel-utils@^0.1.34:
-  version "0.1.34"
-  resolved "https://registry.yarnpkg.com/nuudel-utils/-/nuudel-utils-0.1.34.tgz#2f58a425edb97d3aa9cd7e3e3e451ec6c45d271e"
-  integrity sha512-W3BT7hRj24tCcvSVAvoKaownmQsE0GtdKzfYFQTM9+WBBYkxtifB2ZFHBqVPI+2toXmWG72gMancUhMtSRIvJg==
+nuudel-utils@^0.1.35:
+  version "0.1.35"
+  resolved "https://registry.yarnpkg.com/nuudel-utils/-/nuudel-utils-0.1.35.tgz#62098b0c2368a3b5758dc6205e65185ced9f056f"
+  integrity sha512-izX2KU11rN40aW9jz9xb71SxIpIPdmpZ6BiMwClsvFddhVGVo4G4/Jfqw8Q66bRdu3y5kl/nI83f5XQVAK15uw==
   dependencies:
     axios "0.24.0"
-    crypto-js "^4.1.1"
+    crypto-js "3.1.9-1"
     graphql-tag "^2.12.6"
     moment "^2.29.1"
 
