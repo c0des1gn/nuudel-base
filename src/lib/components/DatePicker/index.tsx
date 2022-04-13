@@ -70,12 +70,11 @@ export const DatePicker: FC<IDatePickerProps> = ({
     }
   };
 
-  /*
   useEffect(() => {
-    if (value === new Date('1970-01-01T12:00:00')) {
-      setValue(props.defaultDate);
+    if (props?.defaultDate) {
+      setValue(toDate(props.defaultDate));
     }
-  }, [props.defaultDate]); // */
+  }, [props.defaultDate]);
 
   return (
     <>
