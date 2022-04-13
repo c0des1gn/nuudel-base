@@ -87,7 +87,7 @@ export const DatePicker: FC<IDatePickerProps> = ({
           value={value}
           mode={mode}
           onChange={(e: any, date?: Date) => {
-            if (date) {
+            if (!date) {
               date = new Date();
             }
             setShow(Platform.OS === 'ios');
