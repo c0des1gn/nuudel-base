@@ -48,7 +48,10 @@ export interface IDatePickerProps {
   style?: any;
   styleText?: any;
   textColor?: string;
+  mode?: IOSMode;
 }
+
+type IOSMode = 'countdown' | 'datetime' | 'date' | 'time';
 
 export const DatePicker: FC<IDatePickerProps> = ({
   style,
@@ -58,7 +61,7 @@ export const DatePicker: FC<IDatePickerProps> = ({
   const [show, setShow] = useState(Platform.OS === 'ios');
   const [value, setValue] = useState(toDate(props?.defaultDate));
   const [mode, setMode] = useState(
-    (Platform.OS === 'ios' ? 'datetime' : 'date') as any
+    props.mode || (Platform.OS === 'ios' ? 'datetime' : 'date')
   );
 
   const showDatepicker = () => {
@@ -82,7 +85,7 @@ export const DatePicker: FC<IDatePickerProps> = ({
           testID="dateTimePicker"
           display={Platform.OS === 'ios' ? 'compact' : 'default'}
           value={value}
-          mode={Platform.OS === 'ios' ? 'datetime' : 'date'}
+          mode={mode}
           onChange={(e: any, date?: Date) => {
             if (date) {
               date = new Date();
