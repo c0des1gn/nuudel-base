@@ -31,7 +31,7 @@ export const getRegex = (listname: string) => {
           MaxLength: 60,
         },
         {
-          field: 'address1',
+          field: 'address',
           type: DisplayType.Requared,
           MaxLength: 100,
         },
@@ -57,8 +57,8 @@ export const getRegex = (listname: string) => {
         },
         {
           field: 'zipcode',
-          type: DisplayType.Requared,
-          regex: /^\d{5}$/,
+          type: DisplayType.Optional,
+          regex: /^\d{5}|^$/,
           prompt: t('number only'),
           MaxLength: 5,
         },
@@ -66,8 +66,8 @@ export const getRegex = (listname: string) => {
           field: 'register',
           type: DisplayType.Requared,
           regex:
-            /^(([a-zA-Z]{2,3}|[а-яА-ЯөӨүҮёЁ]{2})\d{8}\s{0,1})$|^\d{7}\s{0,4}$/u, // /^(([a-zA-Z]{2,3}|[а-яА-ЯөӨүҮёЁ]{2})\d{8})$|^\d{7}$/u,
-          MaxLength: 11,
+            /^(([a-zA-Z]{2,4}|[а-яА-ЯөӨүҮёЁ]{2})\d{8}\s{0,1})$|^\d{7}\s{0,4}$/u, // /^(([a-zA-Z]{2,3}|[а-яА-ЯөӨүҮёЁ]{2})\d{8})$|^\d{7}$/u,
+          MaxLength: 12,
         },
         {
           field: 'phone',
