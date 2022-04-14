@@ -58,7 +58,7 @@ export const getRegex = (listname: string) => {
         {
           field: 'zipcode',
           type: DisplayType.Optional,
-          regex: /^\d{5}|^$/,
+          regex: /^\d{5}$|^$/,
           prompt: t('number only'),
           MaxLength: 5,
         },
