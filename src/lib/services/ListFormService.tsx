@@ -1120,7 +1120,7 @@ export class ListFormService implements IListFormService {
         }
       } catch (error: any) {
         if (__DEV__) {
-          console.warn(query);
+          console.warn(query, JSON.stringify(variables));
         }
         onErrors(error);
         return reject(this.getErrorMessage(error));

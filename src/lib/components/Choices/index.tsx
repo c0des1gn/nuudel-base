@@ -37,11 +37,7 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
   constructor(props: IChoicesProps) {
     super(props);
     this.state = {
-      selected: !props.selected
-        ? []
-        : props.selected instanceof Array
-        ? props.selected
-        : [props.selected],
+      selected: this.formatValue(props.selected),
     };
   }
 
@@ -51,14 +47,20 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
     selected: [],
   };
 
+  private formatValue(selected?: string[] | string) {
+    return !selected
+      ? []
+      : typeof selected === 'string'
+      ? [selected]
+      : selected instanceof Array
+      ? selected
+      : [selected];
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.selected !== prevProps.selected) {
       this.setState({
-        selected: !this.props.selected
-          ? []
-          : this.props.selected instanceof Array
-          ? this.props.selected
-          : [this.props.selected],
+        selected: this.formatValue(this.props.selected),
       });
     }
   }
@@ -150,8 +152,8 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
             disabled={this.props.disabled == true}
             radio_props={data}
             initial={
-              selected.length > 0
-                ? data.findIndex((item) => item.value === selected[0])
+              selected?.length > 0
+                ? data?.findIndex((item) => item.value === selected[0])
                 : -1
             }
             formHorizontal={this.props.formHorizontal}

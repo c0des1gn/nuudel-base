@@ -69,6 +69,14 @@ class RadioForm extends React.Component<IRadioForm, IRadioFormState> {
     buttonOuterSize: 20,
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props.initial !== prevProps.initial) {
+      this.setState({
+        is_active_index: this.props.initial,
+      });
+    }
+  }
+
   updateIsActiveIndex(index) {
     this.setState({ is_active_index: index });
     this.props.onPress(this.props.radio_props[index], index);
