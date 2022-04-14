@@ -687,14 +687,14 @@ export class ListFormService implements IListFormService {
         ControlMode.Edit
       );
     }
-    let query = this.editQuery(
+    let mutate = this.editQuery(
       listname,
       itemId,
       data,
       originalData,
       fieldsSchema
     );
-    return this.executeQuery(query, listname, QueryType.Edit);
+    return this.executeQuery(mutate, listname, QueryType.Edit);
   }
 
   /**

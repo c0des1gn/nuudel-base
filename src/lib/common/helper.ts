@@ -61,7 +61,7 @@ export const onErrors = ({
   forward,
 }): void | any => {
   if (graphQLErrors) {
-    if (networkError.statusCode === 401) {
+    if (networkError?.statusCode === 401) {
       signOut();
       return;
     }
