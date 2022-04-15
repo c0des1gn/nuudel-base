@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   item: {
+    backgroundColor: COLORS.TRANSPARENT,
     marginBottom: 0,
     borderBottomWidth: SIZES.BORDER_WIDTH,
     borderBottomColor: COLORS.BORDER_LIGHT,

@@ -105,9 +105,9 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
                 activeOpacity={0.7}
                 checkedColor={COLORS.PRIMARY}
                 style={styles.checkBox}
+                textStyle={styles.text}
                 checked={selected.indexOf(item.value) >= 0}
                 title={item.label}
-                textStyle={styles.text}
                 onPress={() => {
                   this.onSelect(item.value);
                 }}

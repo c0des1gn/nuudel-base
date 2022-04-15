@@ -19,6 +19,7 @@ export interface IImagePickerProps {
   valueChanged(value: any);
   styleImage?: any;
   host?: string;
+  actionSheetStyle?: any;
 }
 
 export interface IImagePickerState {
@@ -189,6 +190,7 @@ class ImagePickerField extends React.Component<
           list={[
             {
               title: t('TakePhoto'),
+              containerStyle: this.props.actionSheetStyle,
               onPress: () => {
                 this.setState({ showActionSheet: false }, () => {
                   setTimeout(() => {
@@ -206,6 +208,7 @@ class ImagePickerField extends React.Component<
             },
             {
               title: t('ChooseFromLibrary'),
+              containerStyle: this.props.actionSheetStyle,
               onPress: () => {
                 this.setState({ showActionSheet: false }, () => {
                   setTimeout(() => {

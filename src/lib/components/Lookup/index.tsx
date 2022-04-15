@@ -121,12 +121,12 @@ export const Lookup: FC<ILookupProps> = ({
           style={[
             {
               height: 35,
-              marginVertical: SIZES.PADDING,
+              //marginVertical: SIZES.PADDING_SMALL,
               paddingHorizontal: SIZES.PADDING_HALF,
               alignSelf: 'stretch',
               borderColor: COLORS.BORDER_LIGHT,
               borderWidth: SIZES.BORDER_WIDTH,
-              backgroundColor: COLORS.BACKGROUND_GREY,
+              backgroundColor: COLORS.BACKGROUND_GREY + '77',
               borderRadius: SIZES.BORDER_RADIUS,
             },
             iosStyle,
@@ -143,7 +143,7 @@ export const Lookup: FC<ILookupProps> = ({
               style={{
                 lineHeight: 35,
                 marginRight: 'auto',
-                paddingLeft: SIZES.PADDING_HALF,
+                paddingLeft: SIZES.PADDING_SMALL,
                 color: !props.value ? COLORS.PLACEHOLDER : COLORS.TEXT,
                 fontSize: SIZES.BIG,
               }}
@@ -154,6 +154,7 @@ export const Lookup: FC<ILookupProps> = ({
             </Text>
             {!iosDropdownIcon ? (
               <Icon
+                style={{ padding: 3 }}
                 onPress={showOverlay}
                 name={'arrow-down'}
                 size={SIZES.BIG}

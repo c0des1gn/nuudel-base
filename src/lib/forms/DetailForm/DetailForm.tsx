@@ -153,6 +153,7 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
             list={[
               {
                 title: t('Edit'),
+                containerStyle: this.props.actionSheetStyle,
                 onPress: () => {
                   this.setState({ showActionSheet: false }, () => {
                     if (this.props.permission < 3) {
@@ -164,6 +165,7 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
               },
               {
                 title: t('RemoveItem'),
+                containerStyle: this.props.actionSheetStyle,
                 onPress: () => {
                   this.setState({ showActionSheet: false }, () => {
                     if (this.props.permission !== Permission.Remove) {
@@ -175,7 +177,7 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
               },
               {
                 title: t('Cancel'),
-                containerStyle: { backgroundColor: COLORS.PRIMARY },
+                containerStyle: { backgroundColor: COLORS.DANGER },
                 titleStyle: { color: '#fff' },
                 onPress: () => this.setState({ showActionSheet: false }),
               },

@@ -5,4 +5,5 @@ export interface IFormProps extends ICoreProps {
   componentId: string;
   permission: Permission;
   hasStore?: boolean;
+  actionSheetStyle?: any;
 }
