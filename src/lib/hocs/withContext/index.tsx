@@ -7,6 +7,7 @@ let initialState: any = {
   sort: '',
   view: DeviceInfo.isTablet() ? ViewMode.CardList : ViewMode.List,
   theme: 'light',
+  filters: {},
 };
 
 // Create a context for a user
