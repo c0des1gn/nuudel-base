@@ -104,6 +104,7 @@ class Choices extends Component<IChoicesProps, IChoicesState> {
                 disabled={this.props.disabled == true}
                 activeOpacity={0.7}
                 checkedColor={COLORS.PRIMARY}
+                containerStyle={styles.checkBoxContainer}
                 style={styles.checkBox}
                 textStyle={styles.text}
                 checked={selected.indexOf(item.value) >= 0}

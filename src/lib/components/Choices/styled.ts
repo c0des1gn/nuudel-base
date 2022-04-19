@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     //fontFamily: SIZES.FONTFAMILY,
     color: COLORS.TEXT_DARK,
   },
+  checkBoxContainer: { backgroundColor: COLORS.TRANSPARENT },
   checkBox: {
     left: 0,
     marginBottom: SIZES.PADDING_HALF,
