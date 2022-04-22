@@ -25,7 +25,7 @@ interface IChoicesProps {
 export interface IChoicesData {
   value: string | any;
   label: string;
-  icon?: string;
+  icon?: string | Element;
   uri?: string;
 }
 

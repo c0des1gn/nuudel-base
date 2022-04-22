@@ -90,6 +90,9 @@ export const Lookup: FC<ILookupProps> = ({
   ...props
 }) => {
   const showOverlay = () => {
+    if (props?.enabled === false) {
+      return;
+    }
     Keyboard.dismiss();
     Navigation.showOverlay({
       component: {
@@ -134,6 +137,7 @@ export const Lookup: FC<ILookupProps> = ({
         >
           <Pressable
             onPress={showOverlay}
+            disabled={props?.enabled === false}
             style={{
               flexDirection: 'row',
               alignItems: 'center',
