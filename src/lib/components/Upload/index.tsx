@@ -20,6 +20,9 @@ export interface IImagePickerProps {
   styleImage?: any;
   host?: string;
   actionSheetStyle?: any;
+  toWidth?: number;
+  toHeight?: number;
+  cropping?: boolean;
 }
 
 export interface IImagePickerState {
@@ -29,6 +32,7 @@ export interface IImagePickerState {
   showActionSheet?: boolean;
 }
 
+const img_size = 600;
 class ImagePickerField extends React.Component<
   IImagePickerProps,
   IImagePickerState
@@ -45,6 +49,9 @@ class ImagePickerField extends React.Component<
 
   static defaultProps = {
     host: HOST,
+    toWidth: img_size,
+    toHeight: img_size,
+    cropping: true,
   };
 
   componentWillUnmount() {
@@ -195,10 +202,10 @@ class ImagePickerField extends React.Component<
                 this.setState({ showActionSheet: false }, () => {
                   setTimeout(() => {
                     ImagePicker.openCamera({
-                      width: 600,
-                      height: 600,
+                      width: this.props.toWidth || img_size,
+                      height: this.props.toHeight || img_size,
                       forceJpg: true,
-                      cropping: false,
+                      cropping: this.props.cropping !== false,
                     })
                       .then((r) => this.onResponse(r))
                       .catch((e) => {});
@@ -213,10 +220,10 @@ class ImagePickerField extends React.Component<
                 this.setState({ showActionSheet: false }, () => {
                   setTimeout(() => {
                     ImagePicker.openPicker({
-                      width: 600,
-                      height: 600,
+                      width: this.props.toWidth || img_size,
+                      height: this.props.toHeight || img_size,
                       forceJpg: true,
-                      cropping: true,
+                      cropping: this.props.cropping !== false,
                       waitAnimationEnd: true,
                       multiple: false,
                       mediaType: 'photo',
