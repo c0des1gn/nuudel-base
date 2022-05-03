@@ -92,10 +92,14 @@ class ImagePickerField extends React.Component<
 
       let filename: string =
         fileToUpload.filename ||
-        fileToUpload.path
+        (fileToUpload.sourceURL || fileToUpload.path)
           ?.split('/')
           .pop()
           .replace(/\%|\'|\,|\"|\*|\:|\<|\>|\?|\/|\\|\|/g, '');
+
+      if (__DEV__) {
+        console.log(`filename: ${filename}, `, fileToUpload);
+      }
 
       let photo: any = {
         uri: fileToUpload.path,
@@ -120,9 +124,16 @@ class ImagePickerField extends React.Component<
           },
         });
       } catch (e: any) {
-        this.showToast(e.message || t('Upload failed'), 'danger', 4000);
+        this.showToast(
+          (e?.message || t('Upload failed')) + `: ${this.props.host}`,
+          'danger',
+          4000
+        );
       }
       if (res) {
+        if (__DEV__) {
+          console.log('upload res: ', res);
+        }
         let url: string = res.secure_url || res.url || res.data?.uri;
         let picture: any = { uri: url };
         if (res.height) {
@@ -158,7 +169,10 @@ class ImagePickerField extends React.Component<
         imgSource: source,
         singleFile: res,
       },
-      () => this.uploadImage(this.state.singleFile, this.state.lastUpload)
+      () => {
+        const { singleFile, lastUpload } = this.state;
+        this.uploadImage(singleFile, lastUpload);
+      }
     );
   };
 
