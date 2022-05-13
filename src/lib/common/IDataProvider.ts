@@ -1,4 +1,8 @@
-import {IListBaseState, IProviderBase, IProviderItems} from './IListBaseState';
+import {
+  IListBaseState,
+  IProviderBase,
+  IProviderItems,
+} from './IListBaseState';
 
 export default interface IDataProvider {
   validateSettings(): boolean;
@@ -11,6 +15,7 @@ export default interface IDataProvider {
   GetVariations(param: IProviderBase): Promise<any>;
   readListData(state: IListBaseState): Promise<any>;
   getDealItems?(param: IProviderBase): Promise<any>;
+  getMerchandisedProducts?(param: IProviderBase | any): Promise<any>;
   GetAvailability?(itemIds: string[]): Promise<any>;
   GetCategorySuggestions?(param: IProviderBase): Promise<any>;
   category: any[];
