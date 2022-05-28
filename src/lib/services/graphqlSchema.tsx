@@ -61,7 +61,7 @@ const checkSchema = () => {
   });
 };
 
-export let URI: string = '';
+export var URI: string = '';
 export const GetSchema = async (url: string): Promise<GraphQLSchema | null> => {
   let clientSchema: GraphQLSchema | null = null;
   URI = url;

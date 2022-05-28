@@ -4,7 +4,7 @@ const { width } = Dimensions.get('window');
 
 const BASE = 12;
 
-export let SIZES: any = {
+export var SIZES: any = {
   FONTFAMILY:
     Platform.OS === 'ios' || Platform.OS === 'macos'
       ? 'Helvetica'
