@@ -792,7 +792,7 @@ export class ListFormService implements IListFormService {
     }
     for (let i = 0; i < list.length; i++) {
       let node: any = list[i];
-      const field = {
+      let field = {
         [node.Title]:
           node.children.length > 0
             ? node.children
@@ -858,7 +858,7 @@ export class ListFormService implements IListFormService {
             val instanceof Array &&
             val.length > 0
           ) {
-            val = val.map((item) => {
+            val = val.map((item: any) => {
               for (let i = 0; i < field._Children.length; i++) {
                 if (
                   field._Children[i].FieldType === 'MultiChoice' &&
@@ -873,14 +873,14 @@ export class ListFormService implements IListFormService {
                     field._Children[i].ParentObject &&
                     item.hasOwnProperty(field._Children[i].ParentObject)
                   ) {
-                    const fldname = field._Children[i].InternalName.replace(
+                    const namefld = field._Children[i].InternalName.replace(
                       field._Children[i].ParentObject + '.',
                       ''
                     );
-                    item[field._Children[i].ParentObject][fldname] =
+                    item[field._Children[i].ParentObject][namefld] =
                       '{[' +
                       item[field._Children[i].ParentObject][
-                        fldname
+                        namefld
                       ].toString() +
                       ']}';
                   }
