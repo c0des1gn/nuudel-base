@@ -355,8 +355,8 @@ export class DetailForm extends coreComponent<IFormProps, IFormState> {
     if (this.navigationEventListener) {
       this.navigationEventListener.remove();
     }
-    if (this._ref) {
-      this._ref.current = null;
+    if (this._ref?.current) {
+      this._ref.current.close();
     }
   }
 
