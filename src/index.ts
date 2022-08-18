@@ -25,7 +25,7 @@ import {
   IProviderCore,
 } from './lib/common/IListBaseState';
 
-import { createClient, _dataProvider, lfs } from './lib/hocs/withApollo';
+export { createClient, _dataProvider, lfs } from './lib/hocs/withApollo';
 
 // Core
 export * from './lib/hocs';
@@ -36,9 +36,6 @@ export {
   DetailForm,
   coreComponent,
   DataProvider,
-  createClient,
-  _dataProvider,
-  lfs,
   AppearanceProvider,
   ntc,
   versionCompare,

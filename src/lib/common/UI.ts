@@ -88,7 +88,10 @@ export const getHost = async (): Promise<string> => {
     let domain = domainFixer(username?.split('@').pop());
     host = makeHost(domain);
     let data = await UI.getItem(INIT_DATA);
-    let r = JSON.parse(data || '{}');
+    let r: any = {};
+    try {
+      r = JSON.parse(data || '{}');
+    } catch {}
     if (r?.getAllConfig && r.getAllConfig?.length > 0) {
       host = __DEV__ ? r.getAllConfig[0].base_url : host;
     }
@@ -212,8 +215,8 @@ export class UI {
     const token = await UI.getItem(USER_TOKEN);
     // return the headers object
     return {
-      Authorization: token ? `Bearer ${token}` : '',
-      deviceuniqid: DeviceId.uniqueId + '|' + DeviceId.device,
+      Authorization: !token ? '' : `Bearer ${token}`,
+      deviceuniqid: DeviceId?.uniqueId + '|' + DeviceId?.device,
     };
   }
 }

@@ -236,7 +236,9 @@ export class ListFormService implements IListFormService {
         Description = Description.replace(/\{[^{}]*\}/gm, ''); //remove lookup config from description
 
         if (arr !== null && arr.length > 0) {
-          json = JSON.parse(arr[0].replace(/'/g, '"'));
+          try {
+            json = JSON.parse(arr[0]?.replace(/'/g, '"'));
+          } catch {}
         }
       }
       if (fields[key].type) {
@@ -270,7 +272,7 @@ export class ListFormService implements IListFormService {
           break;
         case '#/definitions/ObjectId':
           Type = 'objectId';
-          FieldType = !!json && !!json.list ? 'Lookup' : 'Text';
+          FieldType = !json?.list ? 'Text' : 'Lookup';
           break;
         case '#/definitions/Float':
           Type = 'number';
@@ -325,7 +327,7 @@ export class ListFormService implements IListFormService {
                   key
                 ].items.$ref.substring(14);
               if ('ObjectId' === enumName) {
-                FieldType = !!json && !!json.list ? 'LookupMulti' : 'Text';
+                FieldType = !json?.list ? 'Text' : 'LookupMulti';
               } else if (types.definitions[enumName].type === 'object') {
                 Type = 'object';
                 FieldType = 'Object';
