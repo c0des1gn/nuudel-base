@@ -203,8 +203,9 @@ export const getTimeLeft = (expired: any): string => {
   }
 };
 
-export function getCondition(condition) {
-  switch (condition ? condition.toLowerCase() : '') {
+export function getCondition(condition: string) {
+  let lowercase = !condition ? '' : condition.toLowerCase();
+  switch (lowercase) {
     case 'new':
     case 'sealed':
     case 'brand new':
@@ -255,6 +256,7 @@ export function getCondition(condition) {
       condition = t('LikeNew');
       break;
     case 'very good':
+    case 'excellent':
       condition = t('VeryGood');
       break;
     case 'good':
@@ -268,6 +270,10 @@ export function getCondition(condition) {
       condition = t('Parts');
       break;
     default:
+      if (lowercase.endsWith('refurbished')) {
+        condition =
+          condition.substring(0, condition.length - 11) + t('Refurbished');
+      }
       break;
   }
   return condition;

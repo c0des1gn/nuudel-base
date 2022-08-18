@@ -69,5 +69,8 @@
   "ChangeEmail": "Имэйл өөрчлөх",
   "TakePhoto": "Зураг дарах",
   "ChooseFromLibrary": "Зургийн сангаас сонго",
-  "ErrorOnSavingListItem": "Алдаа жагсаалтыг ачаалж чадсангүй: "
+  "ErrorOnSavingListItem": "Алдаа жагсаалтыг ачаалж чадсангүй: ",
+  "Version": "Хувилбар",
+  "NoInternet": "Интернет холболт алга",
+  "NoConnection": "Сервертэй холбогдож чадсангүй"
 }

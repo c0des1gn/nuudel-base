@@ -32,7 +32,7 @@ if (!I8.isInitialized) {
     },
     //updateMissing: false,
     //missingKeyNoValueFallbackToKey: true,
-    parseMissingKeyHandler: function (key) {
+    parseMissingKeyHandler: function (key: string) {
       return !key || typeof key !== 'string' ? '' : key.split('.').pop() + '';
     },
     //react: { wait: true },

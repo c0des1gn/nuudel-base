@@ -69,5 +69,8 @@
   "ChangeEmail": "Change email",
   "TakePhoto": "Take photo",
   "ChooseFromLibrary": "Choose from library",
-  "ErrorOnSavingListItem": "Error on loading lists: "
+  "ErrorOnSavingListItem": "Error on loading lists: ",
+  "Version": "Version",
+  "NoInternet": "Check your internet connection",
+  "NoConnection": "Could not connect to server"
 }
