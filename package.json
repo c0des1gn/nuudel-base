@@ -1,6 +1,6 @@
 {
   "name": "nuudel-base",
-  "version": "0.1.168",
+  "version": "0.1.170",
   "description": "React-native components for Nuudel",
   "private": false,
   "main": "build/main/index.js",
@@ -53,8 +53,9 @@
     "node": ">=10"
   },
   "dependencies": {
+    "@apollo/client": "3.5.10",
     "@apollo/react-hooks": "^4.0.0",
-    "graphql": "^15.7.2",
+    "graphql": "15.7.2",
     "graphql-2-json-schema": "0.2.0",
     "i18next": "^21.6.6",
     "nuudel-utils": "^0.1.54",
@@ -79,7 +80,6 @@
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
-    "apollo-client": "^2.6.10",
     "ava": "^3.12.1",
     "codecov": "^3.5.0",
     "cspell": "^4.1.0",
@@ -125,6 +125,9 @@
     "react-native-navigation": "^7.23.1",
     "react-native-vector-icons": "^8.1.0",
     "react-native-webview": "^11.6.5"
+  },
+  "resolutions": {
+    "@apollo/react-hooks/@apollo/client": "3.5.10"
   },
   "files": [
     "build/main",
