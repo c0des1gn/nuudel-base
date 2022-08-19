@@ -60,8 +60,8 @@ const IDevices = {
   'iPhone14,6': 'iPhone SE 3rd Gen',
 };
 
-export const DeviceId = {
-  uniqueId: DeviceInfo.getUniqueId(),
+export var DeviceId = {
+  uniqueId: '', //await DeviceInfo.getUniqueId()
   deviceId: DeviceInfo.getDeviceId(),
   brand: DeviceInfo.getBrand(),
   os: Platform.OS,
@@ -76,6 +76,10 @@ export const DeviceId = {
         : DeviceInfo.getDeviceId()
       : DeviceInfo.getDeviceId(),
 };
+
+DeviceInfo.getUniqueId().then((UID: string) => {
+  DeviceId.uniqueId = UID;
+});
 
 export const isIpad =
   Platform.OS === 'ios' && (Platform as PlatformIOSStatic).isPad;
@@ -212,10 +216,10 @@ export class UI {
 
   public static async headers() {
     // get the authentication token from local storage if it exists
-    const token = await UI.getItem(USER_TOKEN);
+    const token: string | null = await UI.getItem(USER_TOKEN);
     // return the headers object
     return {
-      Authorization: !token ? '' : `Bearer ${token}`,
+      ...(!token ? {} : { Authorization: `Bearer ${token}` }),
       deviceuniqid: DeviceId?.uniqueId + '|' + DeviceId?.device,
     };
   }

@@ -120,6 +120,8 @@ class ImagePickerField extends React.Component<
           method: 'post',
           body: data,
           headers: {
+            //Accept: 'application/json',
+            //'Content-Type': 'application/json',
             ...(await UI.headers()),
           },
         });

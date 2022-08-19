@@ -51,8 +51,10 @@ export const createClient = (host?: string) => {
     // return the headers to the context so httpLink can read them
     return {
       headers: {
-        ...headers,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         'Accept-Encoding': 'gzip, deflate, br',
+        ...headers,
         ...(await UI.headers()),
       },
     };
