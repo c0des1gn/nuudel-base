@@ -13,7 +13,7 @@ import { t } from '../loc/i18n';
 
 var alertPresent: boolean = false;
 var debounce: any = undefined;
-const checkSchema = (uri?: string) => {
+const checkSchema = (uri?: string, error?: any) => {
   NetInfo.fetch().then(async (state) => {
     let msg: string = '';
     //const wasConnected: boolean = await UI.IsConnected();
@@ -40,7 +40,7 @@ const checkSchema = (uri?: string) => {
       debounce = setTimeout(async () => {
         try {
           Alert.alert(
-            __DEV__ ? `${uri} :: ${await UI.getItem(USER_TOKEN)}` : '',
+            __DEV__ ? uri : '',
             msg,
             [
               {
@@ -77,9 +77,13 @@ export const GetSchema = async (url: string): Promise<GraphQLSchema | null> => {
       },
       body: JSON.stringify({ query: getIntrospectionQuery() }),
     });
-    clientSchema = buildClientSchema(json.data);
+    if (json?.data) {
+      clientSchema = buildClientSchema(json.data);
+    } else {
+      throw 'no schema data';
+    }
   } catch (error) {
-    checkSchema(url);
+    checkSchema(url, error);
     return Promise.reject(error); // end server untarsan ued ajillah zuils hiine
   } finally {
     URI = '';

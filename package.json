@@ -1,6 +1,6 @@
 {
   "name": "nuudel-base",
-  "version": "0.1.164",
+  "version": "0.1.168",
   "description": "React-native components for Nuudel",
   "private": false,
   "main": "build/main/index.js",

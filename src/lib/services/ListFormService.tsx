@@ -746,6 +746,10 @@ export class ListFormService implements IListFormService {
       );
       query += this.byIdQuery('User', userId, fieldsSchema, false);
     }
+    if (!query) {
+      Promise.reject('');
+      return;
+    }
     query = `query GetLists($filter: String!, $sort: String!, $limit: Int!){${query}}`;
     return this.executeQuery(query, '', QueryType.Many, {
       filter,

@@ -86,7 +86,7 @@ export const isIpad =
 export const { width, height } = Dimensions.get('window');
 
 export const getHost = async (): Promise<string> => {
-  let host = undefined;
+  let host: string = undefined;
   const username = await UI.getItem(USER_KEY);
   if (__DEV__ || username?.includes('@')) {
     let domain = domainFixer(username?.split('@').pop());
@@ -97,7 +97,8 @@ export const getHost = async (): Promise<string> => {
       r = JSON.parse(data || '{}');
     } catch {}
     if (r?.getAllConfig && r.getAllConfig?.length > 0) {
-      host = __DEV__ ? r.getAllConfig[0].base_url : host;
+      host =
+        __DEV__ && Platform.OS === 'ios' ? r.getAllConfig[0].base_url : host;
     }
   }
   return host;
