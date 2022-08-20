@@ -13,10 +13,11 @@ import { ListFormService } from '../../services/ListFormService';
 import { IListFormService } from '../../services/IListFormService';
 import DataProvider from '../../common/DataProvider';
 import IDataProvider from '../../common/IDataProvider';
-import { Appearance } from 'react-native';
+import { Appearance, Platform } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 import { GetSchema, URI } from '../../services/graphqlSchema';
 import { setHost, URL } from 'nuudel-utils';
+//import axios from 'axios';
 //import { theme } from '../../theme';
 //import {onErrors} from '../../common/helper';
 
@@ -35,6 +36,20 @@ const defaultOptions: DefaultOptions = {
   },
 };
 
+const customFetch = async (uri, options): Promise<Response> => {
+  const res = await fetch(uri, options);
+  //if (__DEV__) console.log('customFetch',options,  res);
+  return res;
+  /*
+  return axios({
+    url: uri,
+    method: 'post',
+    ...options,
+    body: undefined,
+    data: options.body,
+  }); // */
+};
+
 var client: any = undefined;
 export const createClient = (host?: string) => {
   let uri = getURL(),
@@ -51,9 +66,11 @@ export const createClient = (host?: string) => {
     // return the headers to the context so httpLink can read them
     return {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Accept-Encoding': 'gzip, deflate, br',
+        accept: 'application/json', // */*
+        'content-type': 'application/json',
+        ...(Platform.OS !== 'android'
+          ? { 'Accept-Encoding': 'gzip, deflate, br' }
+          : {}),
         ...headers,
         ...(await UI.headers()),
       },
@@ -64,6 +81,12 @@ export const createClient = (host?: string) => {
     link: authLink.concat(
       new HttpLink({
         uri: uri,
+        //fetch: customFetch,
+        //fetchOptions: {method: 'POST'},
+        //headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        //credentials: 'include',
+        //useGETForQueries: false,
+        //includeExtensions: false,
       })
     ),
     defaultOptions: defaultOptions,
