@@ -68,9 +68,6 @@ export const createClient = (host?: string) => {
       headers: {
         accept: 'application/json', // */*
         'content-type': 'application/json',
-        ...(Platform.OS !== 'android'
-          ? { 'Accept-Encoding': 'gzip, deflate, br' }
-          : {}),
         ...headers,
         ...(await UI.headers()),
       },

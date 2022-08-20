@@ -221,6 +221,9 @@ export class UI {
     // return the headers object
     return {
       ...(!token ? {} : { Authorization: `Bearer ${token}` }),
+      ...(Platform.OS !== 'android'
+        ? { 'Accept-Encoding': 'gzip, deflate, br' }
+        : {}),
       deviceuniqid: DeviceId?.uniqueId + '|' + DeviceId?.device,
     };
   }

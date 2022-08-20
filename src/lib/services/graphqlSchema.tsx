@@ -71,7 +71,6 @@ export const GetSchema = async (url: string): Promise<GraphQLSchema | null> => {
       //mode: 'no-cors',
       headers: {
         Accept: 'application/json',
-        'Accept-Encoding': 'gzip, deflate, br',
         'Content-Type': 'application/json',
         ...(await UI.headers()),
       },
