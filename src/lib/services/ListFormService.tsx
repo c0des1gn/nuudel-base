@@ -207,7 +207,7 @@ export class ListFormService implements IListFormService {
     } else if (formType === ControlMode.New) {
       obj = types.definitions[listname + 'Input'];
     }
-    let fields = obj.properties;
+    let fields = obj?.properties || [];
     let flds: string[] = Object.keys(fields);
     for (let i = 0; i < flds.length; i++) {
       let key = flds[i];
