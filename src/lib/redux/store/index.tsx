@@ -7,7 +7,7 @@ import {
 //import thunk from 'redux-thunk';
 //import logger from "redux-logger";
 
-import rootReducer, {IRootState} from '../reducers';
+import rootReducer, { IRootState } from '../reducers';
 
 export * from '../reducers'; //{IRootState}
 
@@ -21,6 +21,6 @@ export function createStore(initialState?: IRootState): Store<IRootState> {
   return reduxCreateStore(
     rootReducer,
     initialState,
-    compose(applyMiddleware(...middlewares)),
+    compose(applyMiddleware(...middlewares))
   );
 }
