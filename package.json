@@ -1,6 +1,6 @@
 {
   "name": "nuudel-base",
-  "version": "0.1.183",
+  "version": "0.1.184",
   "description": "React-native components for Nuudel",
   "private": false,
   "main": "build/main/index.js",
@@ -58,7 +58,7 @@
     "graphql": "15.7.2",
     "graphql-2-json-schema": "0.2.0",
     "i18next": "^21.6.6",
-    "nuudel-utils": "^0.1.59",
+    "nuudel-utils": "^0.1.60",
     "react-native-animated-spinkit": "^1.5.2",
     "react-native-multiple-select": "^0.5.7",
     "react-redux": "^7.2.4",
