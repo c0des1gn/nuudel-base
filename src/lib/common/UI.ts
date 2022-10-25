@@ -58,6 +58,10 @@ const IDevices = {
   'iPhone14,4': 'iPhone 13 Mini',
   'iPhone14,5': 'iPhone 13',
   'iPhone14,6': 'iPhone SE 3rd Gen',
+  'iPhone14,7': 'iPhone 14',
+  'iPhone14,8': 'iPhone 14 Plus',
+  'iPhone15,2': 'iPhone 14 Pro',
+  'iPhone15,3': 'iPhone 14 Pro Max',
 };
 
 export var DeviceId = {
