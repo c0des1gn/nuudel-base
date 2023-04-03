@@ -6,6 +6,8 @@ import {
   HOME_SCREEN,
   NOTIFICATION_SCREEN,
   UNIVERSAL_SCREEN,
+  PRODUCT_SCREEN,
+  SEARCH_SCREEN,
 } from './system_screens';
 import { setRoot } from './services/navigation';
 
@@ -99,6 +101,8 @@ export const NavigationPush = async (
       case HOME_SCREEN.name:
       case SIGN_IN_SCREEN.name:
       case NOTIFICATION_SCREEN.name:
+      case PRODUCT_SCREEN.name:
+      case SEARCH_SCREEN.name:
         fastClick(layout, componentId, isStackRoot);
         break;
       default:

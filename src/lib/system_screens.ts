@@ -57,3 +57,15 @@ export const NOTIFICATION_SCREEN = {
   name: 'app.Notification',
   title: 'Notifications',
 };
+
+export const PRODUCT_SCREEN = {
+  id: 'Product',
+  name: 'app.Product',
+  title: 'Item',
+};
+
+export const SEARCH_SCREEN = {
+  id: 'Search',
+  name: 'app.Search',
+  title: 'Search',
+};

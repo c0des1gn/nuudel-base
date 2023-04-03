@@ -20,12 +20,6 @@ import {
 //import CodePush from 'react-native-code-push';
 
 const IDevices = {
-  'iPhone5,1': 'iPhone5',
-  'iPhone5,2': 'iPhone5',
-  'iPhone5,3': 'iPhone5C',
-  'iPhone5,4': 'iPhone5C',
-  'iPhone6,1': 'iPhone5S',
-  'iPhone6,2': 'iPhone5S',
   'iPhone7,1': 'iPhone6 Plus',
   'iPhone7,2': 'iPhone6',
   'iPhone8,1': 'iPhone6s',

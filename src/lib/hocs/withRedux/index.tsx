@@ -25,10 +25,12 @@ export const initStore = async (lfs, user: any = undefined) => {
         }
         usr = {
           ...usr,
-          type: user.type || 'Guest',
-          currency: !user.settings ? 'MNT' : user.settings.currency,
-          locale: !user.settings ? 'mn-MN' : user.settings.locale,
-          status: user._status || 'Active',
+          type: user?.type || usr?.type || 'Guest',
+          currency:
+            (!user?.settings ? usr?.currency : user.settings.currency) || 'MNT',
+          locale:
+            (!user?.settings ? usr?.locale : user.settings.locale) || 'mn-MN',
+          status: user?._status || usr?.status || 'Active',
         };
       }
       const locale = !usr.locale ? 'mn-MN' : Language[usr.locale];
