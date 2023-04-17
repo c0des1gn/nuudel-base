@@ -33,7 +33,12 @@ export const initStore = async (lfs, user: any = undefined) => {
           status: user?._status || usr?.status || 'Active',
         };
       }
-      const locale = !usr.locale ? 'mn-MN' : Language[usr.locale];
+      const locale =
+        (!usr?.locale
+          ? undefined
+          : usr?.locale.includes('-')
+          ? usr.locale
+          : Language[usr.locale]) || 'mn-MN';
       if (I8.language !== locale) {
         changeLanguage(locale);
       }
@@ -41,7 +46,7 @@ export const initStore = async (lfs, user: any = undefined) => {
         sign_in({
           userId: userId,
           currency: usr.currency,
-          locale: Language[usr.locale],
+          locale: locale,
           token: token,
           type: usr.type,
           status: usr.status,

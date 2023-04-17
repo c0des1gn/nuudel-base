@@ -18,5 +18,6 @@ export default interface IDataProvider {
   getMerchandisedProducts?(param: IProviderBase | any): Promise<any>;
   GetAvailability?(itemIds: string[]): Promise<any>;
   GetCategorySuggestions?(param: IProviderBase): Promise<any>;
-  category: any[];
+  getFields?(listname: string, callback?: Function): Promise<any[]>;
+  category?: any[];
 }
