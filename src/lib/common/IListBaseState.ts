@@ -22,6 +22,7 @@ export interface IProviderBase extends IProviderCore {
   variants?: boolean;
   q?: string;
   depth?: number;
+  headers?: any;
 }
 
 export interface IProviderItems extends IProviderCore {
