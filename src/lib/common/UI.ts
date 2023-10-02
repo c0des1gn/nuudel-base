@@ -179,7 +179,7 @@ export class UI {
 
   public static getItem = (
     key: string,
-    callback?: (error?: Error, result?: string) => void
+    callback?: (error?: Error | null, result?: string | null) => void
   ): Promise<string | null> => {
     return AsyncStorage.getItem(key, callback);
   };
@@ -187,7 +187,7 @@ export class UI {
   public static setItem = (
     key: string,
     value: string | null,
-    callback?: (error?: Error) => void
+    callback?: (error?: Error | null) => void
   ): Promise<void> => {
     if (!value) {
       return AsyncStorage.removeItem(key, callback);
@@ -197,7 +197,7 @@ export class UI {
 
   public static removeItem = (
     key: string,
-    callback?: (error?: Error) => void
+    callback?: (error?: Error | null) => void
   ): Promise<void> => {
     return AsyncStorage.removeItem(key, callback);
   };

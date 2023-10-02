@@ -1,6 +1,6 @@
 {
   "name": "nuudel-base",
-  "version": "0.1.191",
+  "version": "0.1.193",
   "description": "React-native components for Nuudel",
   "private": false,
   "main": "build/main/index.js",
@@ -67,9 +67,9 @@
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
-    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-native-community/datetimepicker": "^5.1.0",
-    "@react-native-community/eslint-config": "^2.0.0",
+    "@react-native-community/eslint-config": "^3.2.0",
     "@react-native-community/netinfo": "^7.1.6",
     "@react-native-community/slider": "^4.1.12",
     "@react-native-mapbox-gl/maps": "^8.5.0",
@@ -110,7 +110,7 @@
     "typescript": "^4.0.2"
   },
   "peerDependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-native-community/datetimepicker": "^5.1.0",
     "@react-native-community/netinfo": "^7.1.6",
     "@react-native-community/slider": "^4.1.12",

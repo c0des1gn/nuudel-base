@@ -14,7 +14,7 @@ export default interface IDataProvider {
   GetBrowseNodes(param: IProviderBase): Promise<any>;
   GetVariations(param: IProviderBase): Promise<any>;
   readListData(state: IListBaseState, isCached?: boolean): Promise<any>;
-  getDealItems?(param: IProviderBase): Promise<any>;
+  getDealItems?(param: IListBaseState): Promise<any>;
   getDealById?(param: IProviderBase): Promise<any>;
   getMerchandisedProducts?(param: IProviderBase | any): Promise<any>;
   GetAvailability?(itemIds: string[]): Promise<any>;

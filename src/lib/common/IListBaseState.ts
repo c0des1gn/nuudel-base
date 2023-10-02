@@ -8,12 +8,14 @@ export interface IListBaseState {
   currentPage: number;
   listname?: string;
   fetchPolicy?: string;
+  headers?: any;
 }
 
 export interface IProviderCore {
   query?: string;
   listname?: string;
   resources?: string;
+  headers?: any;
 }
 
 export interface IProviderBase extends IProviderCore {
