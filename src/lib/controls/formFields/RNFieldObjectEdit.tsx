@@ -18,7 +18,7 @@ const RNFieldObjectEdit: React.FunctionComponent<IRNFormFieldProps> = (
   const { disabled } = storeProps(props);
   return !props.fieldSchema.IsArray ? (
     <Input
-      autoCompleteType=""
+      autoCompleteType="off"
       style={styles.object}
       disabled={props.disabled || disabled}
       key={props.fieldSchema.InternalName}

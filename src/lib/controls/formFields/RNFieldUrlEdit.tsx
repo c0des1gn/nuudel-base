@@ -29,7 +29,7 @@ const RNFieldUrlEdit: React.FC<IRNFormFieldProps> = (props) => {
       onChangeText={(val) => props.valueChanged(val)}
       placeholder={t('UrlFormFieldPlaceholder')}
       placeholderTextColor={COLORS.PLACEHOLDER}
-      autoCompleteType={'off'}
+      autoCompleteType="off"
     />
   );
 };
