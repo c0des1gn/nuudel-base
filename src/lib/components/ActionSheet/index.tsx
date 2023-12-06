@@ -1,4 +1,5 @@
-import React, { useState, CSSProperties, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { BottomSheet, ListItem } from 'react-native-elements';
 
 //import Text from '../Text';
@@ -11,8 +12,8 @@ interface IActionSheetProps {
 
 interface ISheetItemProps {
   title: string;
-  containerStyle?: CSSProperties | any;
-  titleStyle?: CSSProperties | any;
+  containerStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
   onPress?(e?: any);
 }
 

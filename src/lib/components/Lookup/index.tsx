@@ -1,5 +1,14 @@
-import React, { FC, useState, CSSProperties } from 'react';
-import { View, Platform, Text, Keyboard, Pressable } from 'react-native';
+import React, { FC, useState } from 'react';
+import {
+  View,
+  Platform,
+  Text,
+  Keyboard,
+  Pressable,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { Navigation } from 'react-native-navigation';
 import { styles } from '../../theme/styles';
@@ -10,11 +19,11 @@ import { COLORS, SIZES } from '../../theme';
 
 interface ILookupProps {
   title?: string;
-  style?: CSSProperties | any;
-  containerStyle?: CSSProperties | any;
-  iosStyle?: CSSProperties | any;
+  style?: StyleProp<TextStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+  iosStyle?: StyleProp<ViewStyle>;
   iosDropdownIcon?: any;
-  itemStyle?: CSSProperties | any;
+  itemStyle?: StyleProp<TextStyle>;
   options: IPickerItem[];
   value?: any;
   onChange(value: any, index?: number);
